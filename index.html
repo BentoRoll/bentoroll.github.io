@@ -15,13 +15,16 @@
     </div>
     <nav>
         <a href="index.html">Home</a>
+        <a href="#">Genres</a>
+        <a href="#">Popular</a>
+        <a href="#">Latest</a>
     </nav>
 </header>
 
 <main>
     <section class="hero">
-        <h2>Watch Anime</h2>
-        <p>Stream your favorite shows for free.</p>
+        <h2>Stream Anime for Free</h2>
+        <p>Watch your favorite shows anytime, anywhere.</p>
     </section>
 
     <section id="series-container" class="series-grid">
@@ -34,44 +37,37 @@
 </footer>
 
 <script>
-// This script now loads a list of series and creates cards that link to series.html
-fetch(`data/series.json`) 
+// Load series and create interactive cards
+fetch('data/series.json')
 .then(res => {
-    if (!res.ok) {
-        throw new Error('Series data file not found.');
-    }
+    if (!res.ok) throw new Error('Series data not found.');
     return res.json();
 })
 .then(seriesList => {
     const container = document.getElementById('series-container');
-    container.innerHTML = ''; // Clear loading text
-    
-    // Sort series alphabetically by title for a better user experience
-    seriesList.sort((a, b) => a.title.localeCompare(b.title));
+    container.innerHTML = '';
+    seriesList.sort((a,b)=>a.title.localeCompare(b.title));
 
     seriesList.forEach(series => {
         const card = document.createElement('div');
-        // Use an anchor tag or click event to make the entire card navigable
-        card.className = 'series-card'; 
+        card.className = 'series-card';
         card.innerHTML = `
             <img src="${series.poster}" alt="${series.title} Poster">
             <div class="series-info">
                 <h3>${series.title}</h3>
             </div>
         `;
-        card.onclick = () => {
-            // Clicking the poster links to the new series details page (series.html)
-            window.location.href = `series.html?series=${series.slug}`;
-        };
+        card.onclick = () => window.location.href = `series.html?series=${series.slug}`;
         container.appendChild(card);
     });
 })
-.catch(error => {
+.catch(err => {
     const loadingText = document.getElementById('loading-text');
-    loadingText.textContent = 'Error: Could not load series list. Please check data/series.json.';
+    loadingText.textContent = 'Error loading series. Please try again later.';
     loadingText.style.color = '#FF6600';
-    console.error('Failed to load series.json:', error);
+    console.error(err);
 });
 </script>
 </body>
 </html>
+
