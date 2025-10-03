@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Series Episodes - BentoRoll</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <img src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo">
+        <h1>BentoRoll</h1>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+    </nav>
+</header>
+
+<main class="series-details-page">
+    <h2 id="series-title" class="series-title">Loading Series...</h2>
+    <p id="series-description" class="series-description"></p>
+
+    <section id="episode-list" class="episode-list-container">
+        <div id="episode-loading">Loading episodes...</div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 BentoRoll. All rights not reserved.</p>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const seriesSlug = params.get('series');
+
+const titleEl = document.getElementById('series-title');
+const descEl = document.getElementById('series-description');
+const listEl = document.getElementById('episode-list');
+
+if (!seriesSlug) {
+    titleEl.textContent = "Series not specified.";
+    document.getElementById('episode-loading').style.display = 'none';
+} else {
+    // 1. Fetch series list to get title/description (assumes series.json exists)
+    fetch(`data/series.json`)
+    .then(res => res.json())
+    .then(seriesList => {
+        const seriesData = seriesList.find(s => s.slug === seriesSlug);
+        if (seriesData) {
+            titleEl.textContent = seriesData.title;
+            descEl.textContent = seriesData.description;
+            document.title = `${seriesData.title} | BentoRoll`;
+        } else {
+             titleEl.textContent = seriesSlug.toUpperCase();
+             descEl.textContent = "Series details not found.";
+        }
+    })
+    .catch(console.error);
+    
+    // 2. Fetch episode data
+    fetch(`data/${seriesSlug}/episodes.json`)
+    .then(res => {
+        if (!res.ok) throw new Error('Episodes file not found.');
+        return res.json();
+    })
+    .then(episodes => {
+        listEl.innerHTML = ''; // Clear loading text
+        
+        episodes.sort((a, b) => a.episode - b.episode).forEach(ep => {
+            const item = document.createElement('a');
+            item.href = `watch.html?series=${seriesSlug}&episode=${ep.episode}`;
+            item.className = 'episode-list-item';
+            
+            // Format: E1 - The Sphere
+            item.innerHTML = `
+                <span class="episode-number">E${ep.episode}</span>
+                <span class="episode-title-text">${ep.title}</span>
+            `;
+            listEl.appendChild(item);
+        });
+    })
+    .catch(error => {
+        document.getElementById('episode-loading').textContent = `Failed to load episodes for ${seriesSlug}.`;
+        console.error("Error loading episodes:", error);
+    });
+}
+</script>
+</body>
+</html>

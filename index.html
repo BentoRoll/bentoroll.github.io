@@ -23,8 +23,8 @@
         <p>Stream your favorite shows for free.</p>
     </section>
 
-    <section id="episodes-container" class="episodes-grid">
-        <!-- Episode cards will be loaded here -->
+    <section id="series-container" class="series-grid">
+        <div id="loading-text">Loading series...</div>
     </section>
 </main>
 
@@ -33,29 +33,44 @@
 </footer>
 
 <script>
-const seriesName = "gachiakuta";
+// This script now loads a list of series and creates cards that link to series.html
+fetch(`data/series.json`) 
+.then(res => {
+    if (!res.ok) {
+        throw new Error('Series data file not found.');
+    }
+    return res.json();
+})
+.then(seriesList => {
+    const container = document.getElementById('series-container');
+    container.innerHTML = ''; // Clear loading text
+    
+    // Sort series alphabetically by title for a better user experience
+    seriesList.sort((a, b) => a.title.localeCompare(b.title));
 
-fetch(`data/${seriesName}/episodes.json`)
-.then(res => res.json())
-.then(episodes => {
-    const container = document.getElementById('episodes-container');
-    episodes.forEach(ep => {
+    seriesList.forEach(series => {
         const card = document.createElement('div');
-        card.className = 'episode-card';
+        // Use an anchor tag or click event to make the entire card navigable
+        card.className = 'series-card'; 
         card.innerHTML = `
-            <img src="${ep.cover}" alt="${ep.series} Ep ${ep.episode}">
-            <div class="episode-info">
-                <h3>${ep.series} Ep ${ep.episode}</h3>
-                <p>${ep.title}</p>
+            <img src="${series.poster}" alt="${series.title} Poster">
+            <div class="series-info">
+                <h3>${series.title}</h3>
             </div>
         `;
         card.onclick = () => {
-            window.location.href = `watch.html?series=${seriesName}&episode=${ep.episode}`;
+            // Clicking the poster links to the new series details page (series.html)
+            window.location.href = `series.html?series=${series.slug}`;
         };
         container.appendChild(card);
     });
+})
+.catch(error => {
+    const loadingText = document.getElementById('loading-text');
+    loadingText.textContent = 'Error: Could not load series list. Please check data/series.json.';
+    loadingText.style.color = '#FF6600';
+    console.error('Failed to load series.json:', error);
 });
 </script>
 </body>
 </html>
-
