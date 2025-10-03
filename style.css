@@ -1,15 +1,18 @@
-/* Reset */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* --- Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Arial', sans-serif;
-    /* Changed background to a slightly darker off-white/light gray 
-       for better contrast with the white cards and to mimic streaming platforms */
-    background-color: #F0F0F0; 
+    /* Slightly darker off-white/light gray for contrast with white cards, streaming-style */
+    background-color: #F0F0F0;
     color: #333;
 }
 
-/* Header */
+/* --- Header Styles --- */
 header {
     background-color: #FF6600; /* Crunchyroll-style orange */
     display: flex;
@@ -52,7 +55,7 @@ header nav a:hover {
     transform: scale(1.05);
 }
 
-/* Hero section */
+/* --- Hero Section --- */
 .hero {
     text-align: center;
     padding: 80px 20px;
@@ -71,7 +74,7 @@ header nav a:hover {
     color: #555;
 }
 
-/* Episodes grid (for index.html) */
+/* --- Episodes Grid --- */
 .episodes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -92,8 +95,7 @@ header nav a:hover {
 
 .episode-card img {
     width: 100%;
-    /* Enforce 16:9 aspect ratio for covers for uniformity */
-    aspect-ratio: 16 / 9; 
+    aspect-ratio: 16 / 9; /* Uniform 16:9 covers */
     object-fit: cover;
     display: block;
     transition: transform 0.3s;
@@ -124,39 +126,24 @@ header nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #333; /* Darker footer for better contrast/professional look */
-    color: white;
-    margin-top: 40px;
-    font-size: 14px;
-}
-
-/* --- Watch Page Specific Styles (for watch.html) --- */
-
-/* Full-width container to center and constrain the video */
+/* --- Watch Page Styles --- */
 .watch-page {
-    /* Changed max-width to a common desktop breakpoint for player */
-    max-width: 1400px; 
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px; /* Side padding */
+    padding: 0 20px;
 }
 
-/* Container for the video player - critical for the aspect ratio trick */
 .watch-container {
     width: 100%;
     position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
-    background-color: #000; /* Black background for the player area */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background-color: #000;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
     margin-top: 20px;
-    border-radius: 4px; /* Slight rounding for a modern feel */
-    overflow: hidden; /* Important for the border-radius */
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-/* The actual iframe/video element */
 .video-player {
     position: absolute;
     top: 0;
@@ -166,42 +153,71 @@ footer {
     border: none;
 }
 
-/* Episode Details Section */
 .episode-details {
     padding: 20px 0;
 }
 
 .watch-title {
-    font-size: 36px; /* Slightly larger title */
-    font-weight: 800; 
-    color: #333; 
+    font-size: 36px;
+    font-weight: 800;
+    color: #333;
     margin: 20px 0 10px 0;
     line-height: 1.2;
 }
 
-/* --- Responsive Adjustments --- */
+/* --- Episode Navigation --- */
+.episode-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
 
+.nav-button {
+    background-color: #FF6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s, opacity 0.2s;
+    min-width: 150px;
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: #E05C00;
+}
+
+.nav-button:disabled {
+    background-color: #CCC;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* --- Footer Styles --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    margin-top: 40px;
+    font-size: 14px;
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
     .hero h2 { font-size: 32px; }
     .episode-info h3 { font-size: 16px; }
-    
-    /* Responsive adjustment for watch title */
-    .watch-title {
-        font-size: 26px;
-        margin-top: 15px;
-    }
+    .watch-title { font-size: 26px; margin-top: 15px; }
 }
 
 @media (max-width: 480px) {
     header .logo h1 { font-size: 22px; }
     header nav a { margin-left: 15px; }
     .hero h2 { font-size: 28px; }
-    
-    .watch-title {
-        font-size: 20px;
-        font-weight: bold;
-    }
-    .watch-page {
-        padding: 0 10px;
-    }
+    .watch-title { font-size: 20px; font-weight: bold; }
+    .watch-page { padding: 0 10px; }
+    .episode-nav-buttons { gap: 10px; }
 }
+

@@ -24,6 +24,15 @@
     
     <section class="episode-details">
         <h2 id="episode-title" class="watch-title">Loading...</h2>
+        
+        <div class="episode-nav-buttons">
+            <button id="prev-btn" class="nav-button prev-button" disabled>
+                &larr; Previous
+            </button>
+            <button id="next-btn" class="nav-button next-button" disabled>
+                Next &rarr;
+            </button>
+        </div>
         </section>
 </main>
 
@@ -33,14 +42,25 @@
 
 <script>
 const params = new URLSearchParams(window.location.search);
-const epNum = params.get('episode');
-// Make sure to clean the series name for display if it's different from the series folder name
-const seriesSlug = params.get('series') || "gachiakuta"; 
+const epNumStr = params.get('episode');
+const epNum = parseInt(epNumStr); // Parse episode number as an integer
+const seriesSlug = params.get('series') || "gachiakuta";
+
+// DOM Elements
+const episodeTitle = document.getElementById('episode-title');
+const player = document.getElementById('player');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
 
 // Function to capitalize the first letter of a string
 const capitalize = (s) => {
     if (typeof s !== 'string') return '';
     return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+// Function to navigate to a new episode
+const navigateToEpisode = (newEpisodeNum) => {
+    window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}`;
 };
 
 fetch(`data/${seriesSlug}/episodes.json`)
@@ -51,22 +71,50 @@ fetch(`data/${seriesSlug}/episodes.json`)
     return res.json();
 })
 .then(episodes => {
-    const ep = episodes.find(e => e.episode == epNum);
+    // Sort episodes numerically just in case the JSON isn't ordered
+    episodes.sort((a, b) => a.episode - b.episode);
     
+    // Find the currently requested episode
+    const currentEpIndex = episodes.findIndex(e => e.episode === epNum);
+    const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
+
     if(ep){
-        // Format the title to be clear and professional
-        document.getElementById('episode-title').textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
-        document.getElementById('player').src = ep.url;
+        // 1. Update Player and Title
+        episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
+        player.src = ep.url;
         document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
+
+        // 2. Set up Navigation
+        const prevEp = episodes[currentEpIndex - 1];
+        const nextEp = episodes[currentEpIndex + 1];
+
+        // Previous Button Logic
+        if (prevEp) {
+            prevBtn.disabled = false;
+            prevBtn.textContent = `← Ep ${prevEp.episode}`;
+            prevBtn.onclick = () => navigateToEpisode(prevEp.episode);
+        } else {
+            prevBtn.textContent = '← First Episode';
+        }
+
+        // Next Button Logic
+        if (nextEp) {
+            nextBtn.disabled = false;
+            nextBtn.textContent = `Ep ${nextEp.episode} →`;
+            nextBtn.onclick = () => navigateToEpisode(nextEp.episode);
+        } else {
+            nextBtn.textContent = 'Last Episode →';
+        }
     } else {
-        document.getElementById('episode-title').textContent = "Episode not found. Please check the URL.";
-        document.getElementById('player').style.display = 'none'; // Hide player if no episode is found
+        // Handle episode not found
+        episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
+        player.style.display = 'none';
     }
 })
 .catch(error => {
     console.error("Error loading episode data:", error);
-    document.getElementById('episode-title').textContent = "Error loading episode data.";
-    document.getElementById('player').style.display = 'none';
+    episodeTitle.textContent = "Error loading episode data.";
+    player.style.display = 'none';
 });
 </script>
 </body>
