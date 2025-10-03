@@ -116,8 +116,8 @@ header nav a:hover {
     text-overflow: ellipsis;
 }
 
-/* --- Episodes Grid (OLD - kept for compatibility if needed, but index.html uses .series-grid now) ---
-   *You can remove this section if you only use .series-grid for the homepage.*
+/* --- Episodes Grid (OLD - kept for compatibility) ---
+   *This is the old card layout, kept in case it's used elsewhere*
 */
 .episodes-grid {
     display: grid;
@@ -163,7 +163,9 @@ header nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* --- Series Details Page (series.html) Styles --- */
+/* ---------------------------------------------------- */
+/* --- SERIES DETAILS PAGE (series.html) STYLES --- */
+/* ---------------------------------------------------- */
 .series-details-page {
     max-width: 1000px;
     margin: 0 auto;
@@ -188,44 +190,74 @@ header nav a:hover {
 .episode-list-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px; /* Increased gap for better spacing */
 }
 
+/* ENHANCED EPISODE LIST ITEM */
 .episode-list-item {
-    display: flex;
-    align-items: center;
+    display: flex; /* Use Flexbox to align thumbnail and text */
+    align-items: flex-start; /* Align content to the top */
     padding: 15px 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Stronger shadow */
     text-decoration: none;
     color: #333;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: background-color 0.2s, box-shadow 0.2s;
     border-left: 5px solid transparent; 
 }
 
 .episode-list-item:hover {
     background-color: #FFF5EE; 
     border-left: 5px solid #FF6600; 
-    transform: translateX(2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
 }
 
-.episode-number {
-    font-weight: bold;
+.episode-thumbnail {
+    flex-shrink: 0; /* Prevents the thumbnail from shrinking */
+    width: 180px; /* Set a clean, fixed width for the thumbnail */
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.episode-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.episode-text-content {
+    flex-grow: 1; /* Allows text content to take up remaining space */
+}
+
+.episode-number-title {
+    font-weight: 700; /* Bold */
     font-size: 18px;
-    color: #FF6600;
-    min-width: 50px;
-    margin-right: 15px;
+    color: #333; /* Dark title for readability */
+    margin-bottom: 5px;
 }
 
-.episode-title-text {
-    font-size: 16px;
-    font-weight: 500;
+.episode-list-item:hover .episode-number-title {
+    color: #FF6600; /* Orange title on hover */
 }
 
-/* --- Watch Page Specific Styles (for watch.html) ---
-   *REINFORCED STYLES FOR PLAYER PLACEMENT*
-*/
+.episode-description-preview {
+    font-size: 14px;
+    color: #555;
+    /* Limit description to 2 lines for clean preview */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ---------------------------------------------------- */
+/* --- WATCH PAGE SPECIFIC STYLES (for watch.html) --- */
+/* ---------------------------------------------------- */
 
 /* 1. Main container to center the content */
 .watch-page {
@@ -311,8 +343,9 @@ footer {
     font-size: 14px;
 }
 
-/* --- Responsive Adjustments ---
-*/
+/* ---------------------------------------------------- */
+/* --- RESPONSIVE ADJUSTMENTS --- */
+/* ---------------------------------------------------- */
 
 @media (max-width: 768px) {
     .hero h2 { font-size: 32px; }
@@ -326,9 +359,18 @@ footer {
     .series-title { font-size: 32px; }
     .series-description { font-size: 15px; }
 
+    /* Adjustments for episode list on smaller screens (series.html) */
     .episode-list-item { padding: 12px 15px; }
-    .episode-number { font-size: 16px; }
-    .episode-title-text { font-size: 14px; }
+    .episode-thumbnail {
+        width: 140px; 
+        margin-right: 15px;
+    }
+    .episode-number-title {
+        font-size: 16px;
+    }
+    .episode-description-preview {
+        font-size: 13px;
+    }
     
     .watch-title {
         font-size: 26px;
@@ -339,6 +381,25 @@ footer {
         min-width: unset;
         font-size: 14px;
         padding: 8px 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Stack layout for very small screens (series.html) */
+    .episode-list-item { 
+        padding: 15px;
+        flex-direction: column; 
+        align-items: center;
+    }
+    
+    .episode-thumbnail {
+        width: 100%; /* Full width on mobile */
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .episode-text-content {
+        width: 100%;
     }
 }
 

@@ -42,14 +42,15 @@ if (!seriesSlug) {
     titleEl.textContent = "Series not specified.";
     document.getElementById('episode-loading').style.display = 'none';
 } else {
-    // 1. Fetch series list to get title/description (assumes series.json exists)
+    // 1. Fetch series list to get title/description (assumes data/series.json exists)
     fetch(`data/series.json`)
     .then(res => res.json())
     .then(seriesList => {
         const seriesData = seriesList.find(s => s.slug === seriesSlug);
         if (seriesData) {
             titleEl.textContent = seriesData.title;
-            descEl.textContent = seriesData.description;
+            // Use logical OR for a default description if the data is missing it
+            descEl.textContent = seriesData.description || "No general description is available for this series.";
             document.title = `${seriesData.title} | BentoRoll`;
         } else {
              titleEl.textContent = seriesSlug.toUpperCase();
@@ -72,10 +73,15 @@ if (!seriesSlug) {
             item.href = `watch.html?series=${seriesSlug}&episode=${ep.episode}`;
             item.className = 'episode-list-item';
             
-            // Format: E1 - The Sphere
+            // NEW STRUCTURE: Includes thumbnail, episode number/title, and description preview
             item.innerHTML = `
-                <span class="episode-number">E${ep.episode}</span>
-                <span class="episode-title-text">${ep.title}</span>
+                <div class="episode-thumbnail">
+                    <img src="${ep.cover}" alt="Episode ${ep.episode} thumbnail">
+                </div>
+                <div class="episode-text-content">
+                    <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
+                    <p class="episode-description-preview">${ep.description || "Catch up with the main character as they face new challenges and shocking revelations in this pivotal episode."}</p>
+                </div>
             `;
             listEl.appendChild(item);
         });
