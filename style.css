@@ -1,18 +1,14 @@
-/* --- Reset --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
     font-family: 'Arial', sans-serif;
-    /* Slightly darker off-white/light gray for contrast with white cards, streaming-style */
-    background-color: #F0F0F0;
+    background-color: #F0F0F0; 
     color: #333;
 }
 
-/* --- Header Styles --- */
+/* --- Header Styles ---
+*/
 header {
     background-color: #FF6600; /* Crunchyroll-style orange */
     display: flex;
@@ -55,7 +51,8 @@ header nav a:hover {
     transform: scale(1.05);
 }
 
-/* --- Hero Section --- */
+/* --- Hero Section (for index.html) ---
+*/
 .hero {
     text-align: center;
     padding: 80px 20px;
@@ -74,7 +71,8 @@ header nav a:hover {
     color: #555;
 }
 
-/* --- Episodes Grid --- */
+/* --- Episodes Grid (for index.html) ---
+*/
 .episodes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -95,7 +93,7 @@ header nav a:hover {
 
 .episode-card img {
     width: 100%;
-    aspect-ratio: 16 / 9; /* Uniform 16:9 covers */
+    aspect-ratio: 16 / 9; 
     object-fit: cover;
     display: block;
     transition: transform 0.3s;
@@ -126,25 +124,33 @@ header nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
-/* --- Watch Page Styles --- */
+/* --- Watch Page Specific Styles (for watch.html) ---
+   *REINFORCED STYLES FOR PLAYER PLACEMENT*
+*/
+
+/* 1. Main container to center the content */
 .watch-page {
-    max-width: 1400px;
+    /* Set a reasonable maximum width for the player */
+    max-width: 1400px; 
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px; /* Side padding */
 }
 
+/* 2. Container for the video player - CRITICAL for 16:9 aspect ratio */
 .watch-container {
     width: 100%;
     position: relative;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    background-color: #000;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    padding-top: 56.25%; /* 16:9 Aspect Ratio (9 / 16 * 100) */
+    background-color: #000; /* Black background for the player area */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
     margin-top: 20px;
-    border-radius: 4px;
-    overflow: hidden;
+    border-radius: 4px; 
+    overflow: hidden; 
 }
 
+/* 3. The actual iframe/video element */
 .video-player {
+    /* These three properties ensure the player covers the entire watch-container */
     position: absolute;
     top: 0;
     left: 0;
@@ -153,19 +159,20 @@ header nav a:hover {
     border: none;
 }
 
+/* Episode Details Section */
 .episode-details {
     padding: 20px 0;
 }
 
 .watch-title {
     font-size: 36px;
-    font-weight: 800;
-    color: #333;
+    font-weight: 800; 
+    color: #333; 
     margin: 20px 0 10px 0;
     line-height: 1.2;
 }
 
-/* --- Episode Navigation --- */
+/* --- EPISODE NAVIGATION STYLES --- */
 .episode-nav-buttons {
     display: flex;
     justify-content: space-between;
@@ -173,7 +180,7 @@ header nav a:hover {
 }
 
 .nav-button {
-    background-color: #FF6600;
+    background-color: #FF6600; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -186,16 +193,18 @@ header nav a:hover {
 }
 
 .nav-button:hover:not(:disabled) {
-    background-color: #E05C00;
+    background-color: #E05C00; 
 }
 
 .nav-button:disabled {
-    background-color: #CCC;
+    background-color: #CCC; 
     cursor: not-allowed;
     opacity: 0.6;
 }
+/* --- END EPISODE NAVIGATION STYLES --- */
 
-/* --- Footer Styles --- */
+/* --- Footer Styles ---
+*/
 footer {
     text-align: center;
     padding: 20px;
@@ -205,19 +214,39 @@ footer {
     font-size: 14px;
 }
 
-/* --- Responsive Adjustments --- */
+/* --- Responsive Adjustments ---
+*/
+
 @media (max-width: 768px) {
     .hero h2 { font-size: 32px; }
     .episode-info h3 { font-size: 16px; }
-    .watch-title { font-size: 26px; margin-top: 15px; }
+    
+    .watch-title {
+        font-size: 26px;
+        margin-top: 15px;
+    }
+
+    .nav-button {
+        min-width: unset;
+        font-size: 14px;
+        padding: 8px 15px;
+    }
 }
 
 @media (max-width: 480px) {
     header .logo h1 { font-size: 22px; }
     header nav a { margin-left: 15px; }
     .hero h2 { font-size: 28px; }
-    .watch-title { font-size: 20px; font-weight: bold; }
-    .watch-page { padding: 0 10px; }
-    .episode-nav-buttons { gap: 10px; }
+    
+    .watch-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .watch-page {
+        padding: 0 10px;
+    }
+    
+    .episode-nav-buttons {
+        gap: 10px;
+    }
 }
-
