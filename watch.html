@@ -17,28 +17,57 @@
     </nav>
 </header>
 
-<main class="watch-container">
-    <h2 id="episode-title" class="watch-title">Loading...</h2>
-    <iframe id="player" frameborder="0" allowfullscreen></iframe>
+<main class="watch-page">
+    <div class="watch-container">
+        <iframe id="player" class="video-player" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <section class="episode-details">
+        <h2 id="episode-title" class="watch-title">Loading...</h2>
+        </section>
 </main>
+
+<footer>
+    <p>&copy; 2025 BentoRoll. All rights not reserved.</p>
+</footer>
 
 <script>
 const params = new URLSearchParams(window.location.search);
 const epNum = params.get('episode');
-const seriesName = params.get('series') || "gachiakuta";
+// Make sure to clean the series name for display if it's different from the series folder name
+const seriesSlug = params.get('series') || "gachiakuta"; 
 
-fetch(`data/${seriesName}/episodes.json`)
-.then(res => res.json())
+// Function to capitalize the first letter of a string
+const capitalize = (s) => {
+    if (typeof s !== 'string') return '';
+    return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
+fetch(`data/${seriesSlug}/episodes.json`)
+.then(res => {
+    if (!res.ok) {
+        throw new Error('Failed to load episodes data');
+    }
+    return res.json();
+})
 .then(episodes => {
     const ep = episodes.find(e => e.episode == epNum);
+    
     if(ep){
-        document.getElementById('episode-title').textContent = `${ep.series} Ep ${ep.episode} - ${ep.title}`;
+        // Format the title to be clear and professional
+        document.getElementById('episode-title').textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
         document.getElementById('player').src = ep.url;
+        document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
     } else {
-        document.getElementById('episode-title').textContent = "Episode not found.";
+        document.getElementById('episode-title').textContent = "Episode not found. Please check the URL.";
+        document.getElementById('player').style.display = 'none'; // Hide player if no episode is found
     }
+})
+.catch(error => {
+    console.error("Error loading episode data:", error);
+    document.getElementById('episode-title').textContent = "Error loading episode data.";
+    document.getElementById('player').style.display = 'none';
 });
 </script>
 </body>
 </html>
-
