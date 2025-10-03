@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Series Episodes - BentoRoll</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 </head>
 <body>
 <header>
@@ -20,6 +21,8 @@
 <main class="series-details-page">
     <h2 id="series-title" class="series-title">Loading Series...</h2>
     <p id="series-description" class="series-description"></p>
+
+    <h3 class="episode-list-header">Episodes</h3>
 
     <section id="episode-list" class="episode-list-container">
         <div id="episode-loading">Loading episodes...</div>
@@ -73,7 +76,7 @@ if (!seriesSlug) {
             item.href = `watch.html?series=${seriesSlug}&episode=${ep.episode}`;
             item.className = 'episode-list-item';
             
-            // NEW STRUCTURE: Includes thumbnail, episode number/title, and description preview
+            // Structure includes thumbnail, episode number/title, and description preview
             item.innerHTML = `
                 <div class="episode-thumbnail">
                     <img src="${ep.cover}" alt="Episode ${ep.episode} thumbnail">

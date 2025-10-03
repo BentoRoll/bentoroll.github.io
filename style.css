@@ -74,7 +74,6 @@ header nav a:hover {
 /* --- Series Grid (New for index.html - Poster View) --- */
 .series-grid {
     display: grid;
-    /* Poster aspect ratio is typically taller than 16:9, so adjust minmax */
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
     gap: 30px;
     padding: 30px 20px;
@@ -91,7 +90,6 @@ header nav a:hover {
 
 .series-card img {
     width: 100%;
-    /* Standard poster aspect ratio is roughly 2:3 */
     aspect-ratio: 2 / 3; 
     object-fit: cover;
     display: block;
@@ -116,9 +114,7 @@ header nav a:hover {
     text-overflow: ellipsis;
 }
 
-/* --- Episodes Grid (OLD - kept for compatibility) ---
-   *This is the old card layout, kept in case it's used elsewhere*
-*/
+/* --- Episodes Grid (OLD - kept for compatibility) --- */
 .episodes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -187,10 +183,19 @@ header nav a:hover {
     padding-bottom: 20px;
 }
 
+/* NEW: Header text above episode list */
+.episode-list-header {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    padding-left: 5px; /* Slight padding to align with list items */
+}
+
 .episode-list-container {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Increased gap for better spacing */
+    gap: 15px;
 }
 
 /* ENHANCED EPISODE LIST ITEM */
@@ -200,7 +205,7 @@ header nav a:hover {
     padding: 15px 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Stronger shadow */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
     text-decoration: none;
     color: #333;
     transition: background-color 0.2s, box-shadow 0.2s;
@@ -214,12 +219,12 @@ header nav a:hover {
 }
 
 .episode-thumbnail {
-    flex-shrink: 0; /* Prevents the thumbnail from shrinking */
-    width: 180px; /* Set a clean, fixed width for the thumbnail */
+    flex-shrink: 0;
+    width: 180px;
     aspect-ratio: 16 / 9;
     border-radius: 4px;
     overflow: hidden;
-    margin-right: 20px;
+    margin-right: 20px; /* FIX: Added margin between image and text */
 }
 
 .episode-thumbnail img {
@@ -230,24 +235,23 @@ header nav a:hover {
 }
 
 .episode-text-content {
-    flex-grow: 1; /* Allows text content to take up remaining space */
+    flex-grow: 1;
 }
 
 .episode-number-title {
-    font-weight: 700; /* Bold */
+    font-weight: 700;
     font-size: 18px;
-    color: #333; /* Dark title for readability */
+    color: #333;
     margin-bottom: 5px;
 }
 
 .episode-list-item:hover .episode-number-title {
-    color: #FF6600; /* Orange title on hover */
+    color: #FF6600;
 }
 
 .episode-description-preview {
     font-size: 14px;
     color: #555;
-    /* Limit description to 2 lines for clean preview */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
