@@ -172,6 +172,7 @@ header nav a:hover {
     position: relative;
 }
 
+/* Bento overlay */
 .episode-card::before,
 .watch-episode-card::before {
     content: '';
@@ -185,12 +186,25 @@ header nav a:hover {
     transform: skewY(-2deg);
 }
 
-.episode-card img,
-.watch-episode-card img {
+/* Vertical and Horizontal Images */
+.episode-card img {
     width: 100%;
     aspect-ratio: 16 / 9; 
     object-fit: cover;
     display: block;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.watch-episode-card {
+    display: flex;
+}
+
+.watch-episode-card img {
+    width: 280px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-right: 2px solid #FF6600;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -205,6 +219,7 @@ header nav a:hover {
     box-shadow: 10px 10px 25px rgba(0,0,0,0.2), -5px -5px 15px rgba(255,255,255,0.5);
 }
 
+/* Episode info text */
 .episode-info,
 .watch-episode-info {
     padding: 12px;
@@ -224,6 +239,15 @@ header nav a:hover {
 .watch-episode-info p {
     font-size: 14px;
     color: #555;
+}
+
+/* Horizontal bento layout for watch page */
+.watch-episode-info {
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
 }
 
 /* --- Series Details Page --- */
@@ -403,16 +427,9 @@ footer {
     .episode-description-preview { font-size: 13px; }
     .watch-title { font-size: 26px; margin-top: 15px; }
     .nav-button { min-width: unset; font-size: 14px; padding: 8px 15px; }
-}
-
-@media (max-width: 600px) {
-    .episode-list-item { 
-        padding: 15px;
-        flex-direction: column; 
-        align-items: center;
-    }
-    .episode-thumbnail { width: 100%; margin-right: 0; margin-bottom: 10px; }
-    .episode-text-content { width: 100%; }
+    .watch-episode-card { flex-direction: column; }
+    .watch-episode-card img { width: 100%; border-right: none; border-bottom: 2px solid #FF6600; }
+    .watch-episode-info { padding: 12px 15px; }
 }
 
 @media (max-width: 480px) {
