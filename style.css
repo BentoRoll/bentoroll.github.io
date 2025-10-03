@@ -1,0 +1,68 @@
+/* Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #FFF8E7;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #FFB800;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    color: white;
+}
+
+header .logo h1 { font-size: 28px; }
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+header nav a:hover { opacity: 0.8; }
+
+/* Hero section */
+.hero { text-align: center; padding: 50px 20px; }
+.hero h2 { font-size: 36px; margin-bottom: 10px; }
+.hero p { font-size: 18px; }
+
+/* Episodes grid */
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.episode-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+}
+
+.episode-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #FFB800;
+    color: white;
+    margin-top: 30px;
+}
+
