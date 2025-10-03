@@ -22,17 +22,39 @@
         <p>Stream your favorite shows for free.</p>
     </section>
 
-    <section id="series-container" class="episodes-grid">
-        <div class="episode-card" onclick="window.location.href='watch.html?series=gachiakuta&episode=1'">
-            <h3>Gachiakuta</h3>
-            <p>Watch all episodes</p>
-        </div>
+    <section id="episodes-container" class="episodes-grid">
+        <!-- Episode cards will be loaded here -->
     </section>
 </main>
 
 <footer>
     <p>&copy; 2025 BentoRoll. All rights reserved.</p>
 </footer>
+
+<script>
+const seriesName = "gachiakuta";
+
+fetch(`data/${seriesName}/episodes.json`)
+.then(res => res.json())
+.then(episodes => {
+    const container = document.getElementById('episodes-container');
+    episodes.forEach(ep => {
+        const card = document.createElement('div');
+        card.className = 'episode-card';
+        card.innerHTML = `
+            <img src="${ep.cover}" alt="${ep.series} Ep ${ep.episode}">
+            <div class="episode-info">
+                <h3>${ep.series} Ep ${ep.episode}</h3>
+                <p>${ep.title}</p>
+            </div>
+        `;
+        card.onclick = () => {
+            window.location.href = `watch.html?series=${seriesName}&episode=${ep.episode}`;
+        };
+        container.appendChild(card);
+    });
+});
+</script>
 </body>
 </html>
 
