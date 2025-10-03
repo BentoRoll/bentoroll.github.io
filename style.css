@@ -9,7 +9,7 @@ body {
 
 /* Header */
 header {
-    background-color: #FFCC00; /* yellow */
+    background-color: #FFCC00; /* Crunchyroll-style yellow */
     display: flex;
     justify-content: space-between;
     align-items: center;
