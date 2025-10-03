@@ -4,21 +4,24 @@
     "episode": 1,
     "title": "The Sphere",
     "url": "https://drive.google.com/file/d/1_2p1KXB0gAujqkoN80XVZx6qufBMtLmO/preview",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/7d70352b48a2da3e58baab70cb317861.jpg"
+    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/7d70352b48a2da3e58baab70cb317861.jpg",
+    "description": "Bullied outcast Rudo finds respite in repurposing trash, until a terrible tragedy changes his life forever."
   },
   {
     "series": "Gachiakuta",
     "episode": 2,
     "title": "The Inhabited",
     "url": "https://drive.google.com/file/d/1JWviSzqAb06gMQXBQ9Avw2oeZst9KtYt/preview",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/13ad7d6c53cb800c8eda056156e491f3.jpg"
+    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/13ad7d6c53cb800c8eda056156e491f3.jpg",
+    "description": "Cast into the Pit, Rudo is saved by the mysterious Enjin who may not have his best interests at heart."
   },
   {
     "series": "Gachiakuta",
     "episode": 3,
     "title": "The Ground",
     "url": "https://drive.google.com/file/d/1th4Dafh37p0BGWaU2ylbBSiTvC7hl1qJ/preview",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/4900bcc2f9957ad5f685eabda139b3e4.jpg"
+    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/4900bcc2f9957ad5f685eabda139b3e4.jpg",
+    "description": "Enjin teaches Rudo about life on the Ground, but an encounter with a churlish stranger may cut his time short."
   }
 ]
 
