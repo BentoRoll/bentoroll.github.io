@@ -7,23 +7,23 @@
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 <style>
-/* Banner styling */
+/* Adblocker Banner Styling */
 #adblocker-banner {
-    background-color: #FF6600;
-    color: white;
+    background-color: #FFF3CD;
+    color: #856404;
+    border: 1px solid #FFE8A1;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 800px;
     text-align: center;
-    padding: 10px;
-    font-weight: bold;
     font-family: Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 </style>
 </head>
 <body>
-
-<!-- Adblocker Warning Banner -->
-<div id="adblocker-banner">
-    ⚠️ You need an adblocker. Some ads can be adult, malicious, or otherwise unsafe. ⚠️
-</div>
 
 <header>
     <div class="logo">
@@ -41,6 +41,11 @@
         <p>Your favorite anime, anytime, anywhere.</p>
         <a href="#series-container" class="hero-button">Browse Series</a>
     </section>
+
+    <!-- Adblocker Warning Below Hero Banner -->
+    <div id="adblocker-banner">
+        ⚠️ You need an adblocker. Some ads can be adult, malicious, or otherwise unsafe. ⚠️
+    </div>
 
     <section id="series-container" class="series-grid">
         <div id="loading-text">Loading series...</div>
