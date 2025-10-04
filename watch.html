@@ -14,7 +14,7 @@
   background: rgba(0, 0, 0, 0.9);
   color: white;
   z-index: 9999;
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -34,17 +34,22 @@
   margin-bottom: 20px;
 }
 
-#adblock-overlay a {
+#adblock-overlay a,
+#adblock-overlay button {
   background: #FF6600;
   color: white;
   padding: 12px 20px;
   border-radius: 10px;
+  border: none;
+  cursor: pointer;
   text-decoration: none;
   font-weight: bold;
   transition: background 0.2s;
+  margin-top: 10px;
 }
 
-#adblock-overlay a:hover {
+#adblock-overlay a:hover,
+#adblock-overlay button:hover {
   background: #ff8533;
 }
 </style>
@@ -59,12 +64,11 @@
 
 <main>
   <div id="player-container">
-    <!-- Video player/embed -->
     <iframe id="videoPlayer" src="" frameborder="0" allowfullscreen style="width:100%;height:70vh;border-radius:10px;"></iframe>
   </div>
 </main>
 
-<!-- Adblock warning overlay -->
+<!-- Adblock confirmation overlay -->
 <div id="adblock-overlay">
   <h2>Adblocker Required 🚫</h2>
   <p>
@@ -72,46 +76,26 @@
     To protect yourself, please install <strong>uBlock Origin</strong> before watching.
   </p>
   <a href="https://ublockorigin.com/" target="_blank">Get uBlock Origin</a>
+  <button id="confirm-adblock">I have an adblocker</button>
 </div>
 
 <script>
-// Reliable modern adblock detection
-function detectAdBlock() {
-    return new Promise(resolve => {
-        const script = document.createElement('script');
-        // Script URL that adblockers usually block
-        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
-        script.type = "text/javascript";
-        script.async = true;
-        script.onerror = () => resolve(true);   // blocked → adblock active
-        script.onload = () => resolve(false);   // loaded → no adblock
-        document.body.appendChild(script);
-        setTimeout(() => resolve(false), 300); // fallback
-    });
-}
-
-detectAdBlock().then(adblockActive => {
+document.getElementById('confirm-adblock').onclick = () => {
     const overlay = document.getElementById('adblock-overlay');
     const player = document.getElementById('videoPlayer');
 
-    if (!adblockActive) {
-        // No adblocker → show overlay
-        overlay.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    } else {
-        // Adblocker active → load video
-        overlay.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        const params = new URLSearchParams(window.location.search);
-        const ep = params.get('ep');
-        if (ep) {
-            player.src = `https://stape.fun/e/${ep}/?autoplay=1`;
-            player.setAttribute("allow", "autoplay; fullscreen");
-            player.setAttribute("allowfullscreen", "");
-            player.setAttribute("allowtransparency", "true");
-        }
+    overlay.style.display = 'none';
+    document.body.style.overflow = 'auto';
+
+    const params = new URLSearchParams(window.location.search);
+    const ep = params.get('ep');
+    if (ep) {
+        player.src = `https://stape.fun/e/${ep}/?autoplay=1`;
+        player.setAttribute("allow", "autoplay; fullscreen");
+        player.setAttribute("allowfullscreen", "");
+        player.setAttribute("allowtransparency", "true");
     }
-});
+};
 </script>
 </body>
 </html>
