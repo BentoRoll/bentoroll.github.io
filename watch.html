@@ -59,7 +59,7 @@
 
 <main>
   <div id="player-container">
-    <!-- Your video player/embed goes here -->
+    <!-- Video player/embed -->
     <iframe id="videoPlayer" src="" frameborder="0" allowfullscreen style="width:100%;height:70vh;border-radius:10px;"></iframe>
   </div>
 </main>
@@ -75,35 +75,31 @@
 </div>
 
 <script>
-// Modern adblock detection
-function detectAdBlockModern() {
+// Reliable modern adblock detection
+function detectAdBlock() {
     return new Promise(resolve => {
-        const bait = document.createElement('div');
-        bait.className = 'ad-banner';
-        bait.style.position = 'absolute';
-        bait.style.height = '1px';
-        bait.style.width = '1px';
-        bait.style.left = '-9999px';
-        document.body.appendChild(bait);
-
-        window.setTimeout(() => {
-            const blocked = (getComputedStyle(bait).display === 'none' || bait.offsetParent === null);
-            document.body.removeChild(bait);
-            resolve(blocked);
-        }, 50);
+        const script = document.createElement('script');
+        // Script URL that adblockers usually block
+        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+        script.type = "text/javascript";
+        script.async = true;
+        script.onerror = () => resolve(true);   // blocked → adblock active
+        script.onload = () => resolve(false);   // loaded → no adblock
+        document.body.appendChild(script);
+        setTimeout(() => resolve(false), 300); // fallback
     });
 }
 
-detectAdBlockModern().then(adblockActive => {
+detectAdBlock().then(adblockActive => {
     const overlay = document.getElementById('adblock-overlay');
     const player = document.getElementById('videoPlayer');
 
     if (!adblockActive) {
-        // Show overlay if no adblocker
+        // No adblocker → show overlay
         overlay.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     } else {
-        // Hide overlay and load video
+        // Adblocker active → load video
         overlay.style.display = 'none';
         document.body.style.overflow = 'auto';
         const params = new URLSearchParams(window.location.search);
