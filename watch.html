@@ -6,109 +6,103 @@
 <title>Watch - BentoRoll</title>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
+<style>
+/* Overlay style */
+#adblock-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+#adblock-overlay h2 {
+  color: #FF6600;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+#adblock-overlay p {
+  max-width: 600px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+#adblock-overlay a {
+  background: #FF6600;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+#adblock-overlay a:hover {
+  background: #ff8533;
+}
+</style>
 </head>
 <body>
 <header>
-    <div class="logo">
-        <img src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo">
-        <h1>BentoRoll</h1>
-    </div>
-    <nav>
-        <a href="index.html">Home</a>
-    </nav>
+  <div class="logo">
+    <img src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo">
+    <h1>BentoRoll</h1>
+  </div>
 </header>
 
-<main class="watch-page">
-    <div class="watch-container">
-        <iframe id="player" class="video-player" frameborder="0" allowfullscreen></iframe>
-    </div>
-    
-    <section class="episode-details">
-        <h2 id="episode-title" class="watch-title">Loading...</h2>
-        <p id="episode-description" class="episode-description-preview"></p>
-
-        <div class="episode-nav-buttons">
-            <button id="prev-btn" class="nav-button prev-button" disabled>
-                &larr; Previous
-            </button>
-            <button id="next-btn" class="nav-button next-button" disabled>
-                Next &rarr;
-            </button>
-        </div>
-    </section>
+<main>
+  <div id="player-container">
+    <!-- Your video player/embed goes here -->
+    <iframe id="videoPlayer" src="" frameborder="0" allowfullscreen style="width:100%;height:70vh;border-radius:10px;"></iframe>
+  </div>
 </main>
 
-<footer>
-    <p>&copy; 2025 BentoRoll. All rights not reserved.</p>
-</footer>
+<!-- Adblock warning overlay -->
+<div id="adblock-overlay">
+  <h2>Adblocker Required 🚫</h2>
+  <p>
+    BentoRoll does <strong>not show ads</strong> — however, the video hosts we use may include <strong>adult or malicious ads</strong> inside their players.<br><br>
+    To protect yourself, please install <strong>uBlock Origin</strong> before watching.
+  </p>
+  <a href="https://ublockorigin.com/" target="_blank">Get uBlock Origin</a>
+</div>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const epNumStr = params.get('episode');
-const epNum = parseInt(epNumStr); // Parse episode number
-const seriesSlug = params.get('series') || "gachiakuta";
+// Simple adblock detection
+function detectAdBlock(callback) {
+  const bait = document.createElement('div');
+  bait.className = 'ad-banner ad adsbox advert';
+  bait.style.position = 'absolute';
+  bait.style.left = '-9999px';
+  document.body.appendChild(bait);
 
-// DOM Elements
-const episodeTitle = document.getElementById('episode-title');
-const episodeDesc = document.getElementById('episode-description');
-const player = document.getElementById('player');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
+  window.setTimeout(() => {
+    const blocked = getComputedStyle(bait).display === 'none' || bait.offsetParent === null;
+    document.body.removeChild(bait);
+    callback(blocked);
+  }, 100);
+}
 
-const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
-
-// Navigate to episode
-const navigateToEpisode = (newEpisodeNum) => {
-    window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}`;
-};
-
-fetch(`data/${seriesSlug}/episodes.json`)
-.then(res => {
-    if (!res.ok) throw new Error('Failed to load episodes data');
-    return res.json();
-})
-.then(episodes => {
-    episodes.sort((a, b) => a.episode - b.episode);
-    const currentEpIndex = episodes.findIndex(e => e.episode === epNum);
-    const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
-
-    if(ep){
-        // Update Player, Title, and Description
-        episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
-        episodeDesc.textContent = ep.description || "No description available for this episode.";
-        player.src = ep.url;
-        document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
-
-        // Navigation buttons
-        const prevEp = episodes[currentEpIndex - 1];
-        const nextEp = episodes[currentEpIndex + 1];
-
-        if(prevEp){
-            prevBtn.disabled = false;
-            prevBtn.textContent = `← Ep ${prevEp.episode}`;
-            prevBtn.onclick = () => navigateToEpisode(prevEp.episode);
-        } else {
-            prevBtn.textContent = '← First Episode';
-        }
-
-        if(nextEp){
-            nextBtn.disabled = false;
-            nextBtn.textContent = `Ep ${nextEp.episode} →`;
-            nextBtn.onclick = () => navigateToEpisode(nextEp.episode);
-        } else {
-            nextBtn.textContent = 'Last Episode →';
-        }
-    } else {
-        episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
-        episodeDesc.style.display = 'none';
-        player.style.display = 'none';
+detectAdBlock(isBlocked => {
+  if (!isBlocked) {
+    // If adblocker not detected, show overlay
+    document.getElementById('adblock-overlay').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  } else {
+    // Load video if adblocker active
+    const params = new URLSearchParams(window.location.search);
+    const ep = params.get('ep');
+    if (ep) {
+      document.getElementById('videoPlayer').src = `https://stape.fun/e/${ep}/?autoplay=1`;
     }
-})
-.catch(error => {
-    console.error("Error loading episode data:", error);
-    episodeTitle.textContent = "Error loading episode data.";
-    episodeDesc.style.display = 'none';
-    player.style.display = 'none';
+  }
 });
 </script>
 </body>
