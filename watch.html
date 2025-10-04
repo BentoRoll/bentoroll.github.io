@@ -80,20 +80,26 @@
 </div>
 
 <script>
-document.getElementById('confirm-adblock').onclick = () => {
-    const overlay = document.getElementById('adblock-overlay');
-    const player = document.getElementById('videoPlayer');
+const params = new URLSearchParams(window.location.search);
+const ep = params.get('ep'); // get episode from URL
 
+const overlay = document.getElementById('adblock-overlay');
+const player = document.getElementById('videoPlayer');
+
+document.getElementById('confirm-adblock').onclick = () => {
+    // Hide overlay
     overlay.style.display = 'none';
     document.body.style.overflow = 'auto';
 
-    const params = new URLSearchParams(window.location.search);
-    const ep = params.get('ep');
+    // Load video only if ep exists
     if (ep) {
         player.src = `https://stape.fun/e/${ep}/?autoplay=1`;
         player.setAttribute("allow", "autoplay; fullscreen");
         player.setAttribute("allowfullscreen", "");
         player.setAttribute("allowtransparency", "true");
+    } else {
+        // Optional: show error if no ep in URL
+        player.parentElement.innerHTML = "<p style='color:white;text-align:center;'>No episode specified in the URL.</p>";
     }
 };
 </script>
