@@ -3,9 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BentoRoll - Watch Anime</title>
+<title>Watch - BentoRoll</title>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
+
+<style>
+/* --- Adblock Warning Overlay --- */
+#adblock-warning {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    color: #fff;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+    font-family: 'Arial', sans-serif;
+}
+#adblock-warning h2 {
+    color: #FF6600;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+#adblock-warning p {
+    max-width: 600px;
+    line-height: 1.5;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+#adblock-warning a {
+    color: #FF6600;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.hidden {
+    display: none !important;
+}
+</style>
 </head>
 <body>
 <header>
@@ -15,21 +52,38 @@
     </div>
     <nav>
         <a href="index.html">Home</a>
-        <a href="#">Genres</a>
-        <a href="#">Popular</a>
-        <a href="#">Latest</a>
     </nav>
 </header>
 
-<main>
-    <section class="hero">
-        <h2>Stream Anime Instantly</h2>
-        <p>Your favorite anime, anytime, anywhere.</p>
-        <a href="#series-container" class="hero-button">Browse Series</a>
-    </section>
+<!-- 🔒 Adblock requirement notice -->
+<div id="adblock-warning">
+    <h2>Ad Blocker Required</h2>
+    <p>
+        To protect you from inappropriate or adult ads embedded by external video hosts,
+        BentoRoll requires that you have an ad blocker installed and active.
+    </p>
+    <p>
+        We recommend <a href="https://ublockorigin.com/" target="_blank">uBlock Origin</a> — 
+        it’s completely free and open source.
+    </p>
+    <p>
+        Once you’ve installed and enabled it, refresh this page to continue watching safely.
+    </p>
+</div>
 
-    <section id="series-container" class="series-grid">
-        <div id="loading-text">Loading series...</div>
+<main class="watch-page">
+    <div class="watch-container">
+        <iframe id="player" class="video-player" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
+    <section class="episode-details">
+        <h2 id="episode-title" class="watch-title">Loading...</h2>
+        <p id="episode-description" class="episode-description-preview"></p>
+
+        <div class="episode-nav-buttons">
+            <button id="prev-btn" class="nav-button prev-button" disabled>&larr; Previous</button>
+            <button id="next-btn" class="nav-button next-button" disabled>Next &rarr;</button>
+        </div>
     </section>
 </main>
 
@@ -38,35 +92,67 @@
 </footer>
 
 <script>
-// Load series and create interactive cards
-fetch('data/series.json')
-.then(res => {
-    if (!res.ok) throw new Error('Series data not found.');
-    return res.json();
-})
-.then(seriesList => {
-    const container = document.getElementById('series-container');
-    container.innerHTML = '';
-    seriesList.sort((a,b)=>a.title.localeCompare(b.title));
-
-    seriesList.forEach(series => {
-        const card = document.createElement('div');
-        card.className = 'series-card';
-        card.innerHTML = `
-            <img src="${series.poster}" alt="${series.title} Poster">
-            <div class="series-info">
-                <h3>${series.title}</h3>
-            </div>
-        `;
-        card.onclick = () => window.location.href = `series.html?series=${series.slug}`;
-        container.appendChild(card);
+// --- Adblock detection ---
+(function() {
+    const ad = document.createElement('div');
+    ad.className = 'ad-banner adsbox advertisement'; // common adblock targets
+    ad.style.display = 'none';
+    document.body.appendChild(ad);
+    window.addEventListener('load', () => {
+        const adblockDetected = (ad.offsetHeight === 0);
+        const warning = document.getElementById('adblock-warning');
+        if (adblockDetected) {
+            warning.classList.add('hidden');
+        }
     });
+})();
+
+// --- Existing episode logic ---
+const params = new URLSearchParams(window.location.search);
+const epNumStr = params.get('episode');
+const epNum = parseInt(epNumStr);
+const seriesSlug = params.get('series') || "gachiakuta";
+
+const episodeTitle = document.getElementById('episode-title');
+const episodeDesc = document.getElementById('episode-description');
+const player = document.getElementById('player');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
+
+const navigateToEpisode = (newEpisodeNum) => {
+    window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}`;
+};
+
+fetch(`data/${seriesSlug}/episodes.json`)
+.then(res => res.json())
+.then(episodes => {
+    episodes.sort((a, b) => a.episode - b.episode);
+    const currentEpIndex = episodes.findIndex(e => e.episode === epNum);
+    const ep = episodes[currentEpIndex];
+    if(ep){
+        episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
+        episodeDesc.textContent = ep.description || "No description available.";
+        player.src = ep.url.includes("/e/") ? ep.url : ep.url.replace("streamtape.com/", "streamtape.com/e/") + "/?autoplay=1";
+        player.setAttribute("allow", "autoplay; fullscreen");
+        player.setAttribute("allowfullscreen", "");
+        player.setAttribute("allowtransparency", "true");
+        player.setAttribute("scrolling", "no");
+        player.setAttribute("frameborder", "0");
+
+        const prevEp = episodes[currentEpIndex - 1];
+        const nextEp = episodes[currentEpIndex + 1];
+        if(prevEp){ prevBtn.disabled = false; prevBtn.onclick = () => navigateToEpisode(prevEp.episode); }
+        if(nextEp){ nextBtn.disabled = false; nextBtn.onclick = () => navigateToEpisode(nextEp.episode); }
+    } else {
+        episodeTitle.textContent = `Episode ${epNumStr} not found.`;
+        player.style.display = 'none';
+    }
 })
-.catch(err => {
-    const loadingText = document.getElementById('loading-text');
-    loadingText.textContent = 'Error loading series. Please try again later.';
-    loadingText.style.color = '#FF6600';
-    console.error(err);
+.catch(error => {
+    console.error("Error loading episode data:", error);
+    episodeTitle.textContent = "Error loading episode data.";
 });
 </script>
 </body>
