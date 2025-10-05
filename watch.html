@@ -20,7 +20,13 @@
 
 <main class="watch-page">
     <div class="watch-container">
-        <iframe id="player" class="video-player" frameborder="0" allowfullscreen></iframe>
+        <!-- BentoRoll intro video -->
+        <video id="introVideo" autoplay muted playsinline style="width:100%; max-width:800px;">
+            <source src="/intro.mp4" type="video/mp4">
+        </video>
+
+        <!-- Episode iframe hidden initially -->
+        <iframe id="player" class="video-player" frameborder="0" allowfullscreen style="display:none;"></iframe>
     </div>
     
     <section class="episode-details">
@@ -58,6 +64,7 @@ const player = document.getElementById('player');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const versionButtons = document.getElementById('version-buttons');
+const intro = document.getElementById('introVideo');
 
 const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
 
@@ -66,6 +73,7 @@ const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
     window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
 };
 
+// Fetch episode data
 fetch(`data/${seriesSlug}/episodes.json`)
 .then(res => {
     if (!res.ok) throw new Error('Failed to load episodes data');
@@ -77,7 +85,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
     const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
 
     if(ep){
-        // Determine which URL to use
+        // Determine video URL
         let videoUrl = "#";
         if(ep.videos){
             if(version === 'sub' && ep.videos.sub) videoUrl = ep.videos.sub;
@@ -91,11 +99,9 @@ fetch(`data/${seriesSlug}/episodes.json`)
             videoUrl = `${baseUrl}?autoplay=1&muted=1`;
         }
 
-        // Update Player, Title, and Description
+        // Update title and description
         episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
         episodeDesc.textContent = ep.description || "No description available for this episode.";
-        player.src = videoUrl;
-        player.allow = "autoplay; fullscreen";
         document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
 
         // Version buttons
@@ -134,6 +140,31 @@ fetch(`data/${seriesSlug}/episodes.json`)
         } else {
             nextBtn.textContent = 'Last Episode →';
         }
+
+        // Play intro first, then show episode
+        intro.onended = () => {
+            intro.style.display = 'none';
+            player.style.display = 'block';
+            player.src = videoUrl;
+            player.allow = "autoplay; fullscreen";
+        };
+
+        // If you want to skip intro after first session, uncomment below:
+        /*
+        if(sessionStorage.getItem('skipIntro')){
+            intro.style.display = 'none';
+            player.style.display = 'block';
+            player.src = videoUrl;
+        } else {
+            intro.onended = () => {
+                intro.style.display = 'none';
+                player.style.display = 'block';
+                player.src = videoUrl;
+                sessionStorage.setItem('skipIntro', 'true');
+            };
+        }
+        */
+
     } else {
         episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
         episodeDesc.style.display = 'none';
