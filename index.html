@@ -21,6 +21,26 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+/* Mascot Styling */
+#mascot {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    width: 120px;
+    transform: scaleX(-1); /* flip horizontally to face right */
+    z-index: 2;
+    pointer-events: none;
+}
+.hero {
+    position: relative; /* allow mascot to position inside hero */
+    text-align: center;
+    padding: 120px 20px 100px;
+    background: linear-gradient(135deg,#ffe5cc,#fff9f0);
+    border-bottom: 2px solid #f60;
+    box-shadow: inset 0 -10px 30px rgba(0,0,0,.05);
+    border-radius: 0 0 30px 30px;
+}
 </style>
 </head>
 <body>
@@ -40,6 +60,8 @@
         <h2>Stream Anime Instantly</h2>
         <p>Your favorite anime, anytime, anywhere.</p>
         <a href="#series-container" class="hero-button">Browse Series</a>
+        <!-- Mascot -->
+        <img id="mascot" src="https://i.ibb.co/9HQ8GPYv/image.png" alt="BentoRoll Mascot">
     </section>
 
     <!-- Adblocker Warning Below Hero Banner -->
@@ -90,4 +112,3 @@ fetch('data/series.json')
 </script>
 </body>
 </html>
-
