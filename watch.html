@@ -7,10 +7,9 @@
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 <style>
-/* Fade-out effect for intro */
 .video-fade-out {
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease;
 }
 </style>
 </head>
@@ -78,15 +77,16 @@ const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
     window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
 };
 
-// Function to show episode after intro
+// Function to show episode and remove intro
 const showEpisode = (videoUrl) => {
+    if(!intro) return; // already removed
     intro.classList.add('video-fade-out');
     setTimeout(() => {
-        intro.style.display = 'none';
+        if(intro.parentNode) intro.parentNode.removeChild(intro);
         player.style.display = 'block';
         player.src = videoUrl;
         player.allow = "autoplay; fullscreen";
-    }, 500); // match transition duration
+    }, 300); // match fade-out
 };
 
 fetch(`data/${seriesSlug}/episodes.json`)
@@ -148,9 +148,9 @@ fetch(`data/${seriesSlug}/episodes.json`)
             nextBtn.onclick = () => navigateToEpisode(nextEp.episode, version);
         } else nextBtn.textContent = 'Last Episode →';
 
-        // Play intro first, then show episode
+        // Intro playback
         intro.onended = () => showEpisode(videoUrl);
-        intro.onclick = () => showEpisode(videoUrl); // click to skip intro
+        intro.onclick = () => showEpisode(videoUrl); // click to skip
 
     } else {
         episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
