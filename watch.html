@@ -6,6 +6,13 @@
 <title>Watch - BentoRoll</title>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
+<style>
+/* Fade-out effect for intro */
+.video-fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+</style>
 </head>
 <body>
 <header>
@@ -21,7 +28,7 @@
 <main class="watch-page">
     <div class="watch-container">
         <!-- BentoRoll intro video -->
-        <video id="introVideo" autoplay muted playsinline class="video-player">
+        <video id="introVideo" autoplay playsinline class="video-player">
             <source src="https://github.com/Vystelior/bentoroll.github.io/raw/refs/heads/main/src/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -67,9 +74,19 @@ const versionButtons = document.getElementById('version-buttons');
 const intro = document.getElementById('introVideo');
 
 const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
-
 const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
     window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
+};
+
+// Function to show episode after intro
+const showEpisode = (videoUrl) => {
+    intro.classList.add('video-fade-out');
+    setTimeout(() => {
+        intro.style.display = 'none';
+        player.style.display = 'block';
+        player.src = videoUrl;
+        player.allow = "autoplay; fullscreen";
+    }, 500); // match transition duration
 };
 
 fetch(`data/${seriesSlug}/episodes.json`)
@@ -93,7 +110,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
         // Streamtape autoplay fix
         if(videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com")){
             const baseUrl = videoUrl.split('?')[0];
-            videoUrl = `${baseUrl}?autoplay=1&muted=1`;
+            videoUrl = `${baseUrl}?autoplay=1`;
         }
 
         episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
@@ -132,12 +149,8 @@ fetch(`data/${seriesSlug}/episodes.json`)
         } else nextBtn.textContent = 'Last Episode →';
 
         // Play intro first, then show episode
-        intro.onended = () => {
-            intro.style.display = 'none';
-            player.style.display = 'block';
-            player.src = videoUrl;
-            player.allow = "autoplay; fullscreen";
-        };
+        intro.onended = () => showEpisode(videoUrl);
+        intro.onclick = () => showEpisode(videoUrl); // click to skip intro
 
     } else {
         episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
