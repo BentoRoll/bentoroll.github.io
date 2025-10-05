@@ -19,10 +19,10 @@
 </header>
 
 <main class="watch-page">
-    <div class="watch-container" style="position:relative; width:100%; max-width:800px; height:450px;">
+    <div class="watch-container" style="position:relative; width:100%; max-width:800px; aspect-ratio:16/9;">
         <!-- BentoRoll intro video -->
-        <video id="introVideo" autoplay muted playsinline 
-               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:2;">
+        <video id="introVideo" autoplay muted playsinline
+               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; z-index:2;">
             <source src="https://github.com/Vystelior/bentoroll.github.io/raw/refs/heads/main/src/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -87,7 +87,6 @@ fetch(`data/${seriesSlug}/episodes.json`)
     const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
 
     if(ep){
-        // Determine which URL to use
         let videoUrl = "#";
         if(ep.videos){
             if(version === 'sub' && ep.videos.sub) videoUrl = ep.videos.sub;
@@ -95,7 +94,6 @@ fetch(`data/${seriesSlug}/episodes.json`)
             else videoUrl = ep.videos.sub || ep.videos.dub;
         }
 
-        // Streamtape autoplay fix
         if(videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com")){
             const baseUrl = videoUrl.split('?')[0];
             videoUrl = `${baseUrl}?autoplay=1&muted=1`;
