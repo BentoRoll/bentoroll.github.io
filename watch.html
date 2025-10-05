@@ -19,8 +19,8 @@
 </header>
 
 <main class="watch-page">
-    <div class="watch-container" id="player-container">
-        <!-- iframe will be injected here -->
+    <div class="watch-container">
+        <iframe id="player" class="video-player" frameborder="0" allowfullscreen></iframe>
     </div>
     
     <section class="episode-details">
@@ -47,20 +47,21 @@
 <script>
 const params = new URLSearchParams(window.location.search);
 const epNumStr = params.get('episode');
-const epNum = parseInt(epNumStr); 
+const epNum = parseInt(epNumStr); // Parse episode number
 const seriesSlug = params.get('series') || "gachiakuta";
-let version = params.get('version') || 'sub'; 
+let version = params.get('version') || 'sub'; // sub or dub
 
 // DOM Elements
 const episodeTitle = document.getElementById('episode-title');
 const episodeDesc = document.getElementById('episode-description');
-const playerContainer = document.getElementById('player-container');
+const player = document.getElementById('player');
 const prevBtn = document.getElementById('prev-btn');
 const nextBtn = document.getElementById('next-btn');
 const versionButtons = document.getElementById('version-buttons');
 
 const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
 
+// Navigate to episode
 const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
     window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
 };
@@ -81,26 +82,13 @@ fetch(`data/${seriesSlug}/episodes.json`)
         if(ep.videos){
             if(version === 'sub' && ep.videos.sub) videoUrl = ep.videos.sub;
             else if(version === 'dub' && ep.videos.dub) videoUrl = ep.videos.dub;
-            else videoUrl = ep.videos.sub || ep.videos.dub; 
+            else videoUrl = ep.videos.sub || ep.videos.dub; // fallback
         }
 
-        // Inject iframe
-        playerContainer.innerHTML = `
-            <iframe 
-                src="${videoUrl}" 
-                width="100%" 
-                height="600" 
-                allowfullscreen 
-                allowtransparency 
-                allow="autoplay" 
-                scrolling="no" 
-                frameborder="0">
-            </iframe>
-        `;
-
-        // Update Title and Description
+        // Update Player, Title, and Description
         episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
         episodeDesc.textContent = ep.description || "No description available for this episode.";
+        player.src = videoUrl;
         document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
 
         // Version buttons
@@ -142,7 +130,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
     } else {
         episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
         episodeDesc.style.display = 'none';
-        playerContainer.style.display = 'none';
+        player.style.display = 'none';
         versionButtons.style.display = 'none';
     }
 })
@@ -150,7 +138,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
     console.error("Error loading episode data:", error);
     episodeTitle.textContent = "Error loading episode data.";
     episodeDesc.style.display = 'none';
-    playerContainer.style.display = 'none';
+    player.style.display = 'none';
     versionButtons.style.display = 'none';
 });
 </script>
