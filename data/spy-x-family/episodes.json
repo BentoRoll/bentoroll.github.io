@@ -31,5 +31,27 @@
       "sub": "https://stape.fun/e/qMvPDvBDa7HA1J/?autoplay=1",
       "dub": ""
     }
+  },
+  {
+    "series": "SPY x FAMILY",
+    "episode": 4,
+    "title": "THE PRESTIGIOUS SCHOOL'S INTERVIEW",
+    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/44b97514760c0116a45fa88abceb68a3.jpg",
+    "description": "Loid, Anya, and Yor attend Eden College's prestigious interview. The family faces the pressure to appear perfect and Anya's telepathy creates unexpected moments.",
+    "videos": {
+      "sub": "https://stape.fun/e/2O07rW6vo8TZbzG/?autoplay=1",
+      "dub": ""
+    }
+  },
+  {
+    "series": "SPY x FAMILY",
+    "episode": 5,
+    "title": "WILL THEY PASS OR FAIL?",
+    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e54fb846366568ad2001719ac5fa0e98.jpg",
+    "description": "The Forger family anxiously waits for the results of Eden College's interview. Tensions rise as Anya's behavior and Loid's secret mission put their chances at risk.",
+    "videos": {
+      "sub": "https://stape.fun/e/gwQ3pv0WGXUxXv/?autoplay=1",
+      "dub": ""
+    }
   }
 ]
