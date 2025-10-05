@@ -19,17 +19,15 @@
 </header>
 
 <main class="watch-page">
-    <div class="watch-container" style="position:relative; width:100%; max-width:800px; aspect-ratio:16/9;">
+    <div class="watch-container">
         <!-- BentoRoll intro video -->
-        <video id="introVideo" autoplay muted playsinline
-               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:2;">
+        <video id="introVideo" autoplay muted playsinline class="video-player">
             <source src="https://github.com/Vystelior/bentoroll.github.io/raw/refs/heads/main/src/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
-        <!-- Episode iframe -->
-        <iframe id="player" class="video-player" frameborder="0" allowfullscreen
-                style="position:absolute; top:0; left:0; width:100%; height:100%; display:block; z-index:1;"></iframe>
+        <!-- Episode iframe hidden initially -->
+        <iframe id="player" class="video-player" frameborder="0" allowfullscreen style="display:none;"></iframe>
     </div>
     
     <section class="episode-details">
@@ -56,7 +54,7 @@
 <script>
 const params = new URLSearchParams(window.location.search);
 const epNumStr = params.get('episode');
-const epNum = parseInt(epNumStr); 
+const epNum = parseInt(epNumStr);
 const seriesSlug = params.get('series') || "gachiakuta";
 let version = params.get('version') || 'sub';
 
@@ -92,6 +90,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
             else videoUrl = ep.videos.sub || ep.videos.dub;
         }
 
+        // Streamtape autoplay fix
         if(videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com")){
             const baseUrl = videoUrl.split('?')[0];
             videoUrl = `${baseUrl}?autoplay=1&muted=1`;
@@ -99,10 +98,8 @@ fetch(`data/${seriesSlug}/episodes.json`)
 
         episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
         episodeDesc.textContent = ep.description || "No description available for this episode.";
-        player.src = videoUrl;
         document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
 
-        // Version buttons
         versionButtons.innerHTML = '';
         if(ep.videos?.sub){
             const subBtn = document.createElement('button');
@@ -134,10 +131,14 @@ fetch(`data/${seriesSlug}/episodes.json`)
             nextBtn.onclick = () => navigateToEpisode(nextEp.episode, version);
         } else nextBtn.textContent = 'Last Episode →';
 
-        // Hide intro when finished
+        // Play intro first, then show episode
         intro.onended = () => {
             intro.style.display = 'none';
+            player.style.display = 'block';
+            player.src = videoUrl;
+            player.allow = "autoplay; fullscreen";
         };
+
     } else {
         episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
         episodeDesc.style.display = 'none';
