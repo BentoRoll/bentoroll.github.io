@@ -19,17 +19,17 @@
 </header>
 
 <main class="watch-page">
-    <div class="watch-container" style="position:relative;">
+    <div class="watch-container" style="position:relative; width:100%; max-width:800px; height:450px;">
         <!-- BentoRoll intro video -->
         <video id="introVideo" autoplay muted playsinline
-               style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:2; object-fit:cover;">
+               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:2;">
             <source src="https://github.com/Vystelior/bentoroll.github.io/raw/refs/heads/main/src/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
         <!-- Episode iframe -->
         <iframe id="player" class="video-player" frameborder="0" allowfullscreen
-                style="width:100%; height:100%; display:block; position:relative; z-index:1;"></iframe>
+                style="position:absolute; top:0; left:0; width:100%; height:100%; display:block; z-index:1;"></iframe>
     </div>
     
     <section class="episode-details">
@@ -134,7 +134,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
             nextBtn.onclick = () => navigateToEpisode(nextEp.episode, version);
         } else nextBtn.textContent = 'Last Episode →';
 
-        // Hide intro and show iframe when it ends
+        // Hide intro when finished
         intro.onended = () => {
             intro.style.display = 'none';
         };
