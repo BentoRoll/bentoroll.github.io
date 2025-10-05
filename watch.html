@@ -47,9 +47,9 @@
 <script>
 const params = new URLSearchParams(window.location.search);
 const epNumStr = params.get('episode');
-const epNum = parseInt(epNumStr); // Parse episode number
+const epNum = parseInt(epNumStr);
 const seriesSlug = params.get('series') || "gachiakuta";
-let version = params.get('version') || 'sub'; // sub or dub
+let version = params.get('version') || 'sub';
 
 // DOM Elements
 const episodeTitle = document.getElementById('episode-title');
@@ -82,13 +82,20 @@ fetch(`data/${seriesSlug}/episodes.json`)
         if(ep.videos){
             if(version === 'sub' && ep.videos.sub) videoUrl = ep.videos.sub;
             else if(version === 'dub' && ep.videos.dub) videoUrl = ep.videos.dub;
-            else videoUrl = ep.videos.sub || ep.videos.dub; // fallback
+            else videoUrl = ep.videos.sub || ep.videos.dub;
+        }
+
+        // Streamtape autoplay fix
+        if(videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com")){
+            const baseUrl = videoUrl.split('?')[0];
+            videoUrl = `${baseUrl}?autoplay=1&muted=1`;
         }
 
         // Update Player, Title, and Description
         episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
         episodeDesc.textContent = ep.description || "No description available for this episode.";
         player.src = videoUrl;
+        player.allow = "autoplay; fullscreen";
         document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
 
         // Version buttons
