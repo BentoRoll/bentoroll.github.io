@@ -19,10 +19,10 @@
 </header>
 
 <main class="watch-page">
-    <div class="watch-container" style="position:relative; width:100%; max-width:800px; aspect-ratio:16/9;">
+    <div class="watch-container" style="position:relative; width:100%; max-width:800px; height:450px;">
         <!-- BentoRoll intro video -->
         <video id="introVideo" autoplay muted playsinline
-               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain; z-index:2;">
+               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:fill; z-index:2;">
             <source src="https://github.com/Vystelior/bentoroll.github.io/raw/refs/heads/main/src/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -31,7 +31,7 @@
         <iframe id="player" class="video-player" frameborder="0" allowfullscreen
                 style="position:absolute; top:0; left:0; width:100%; height:100%; display:none; z-index:1;"></iframe>
     </div>
-    
+
     <section class="episode-details">
         <h2 id="episode-title" class="watch-title">Loading...</h2>
         <p id="episode-description" class="episode-description-preview"></p>
@@ -71,7 +71,6 @@ const intro = document.getElementById('introVideo');
 
 const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
 
-// Navigate to episode
 const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
     window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
 };
@@ -87,6 +86,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
     const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
 
     if(ep){
+        // Determine episode video URL
         let videoUrl = "#";
         if(ep.videos){
             if(version === 'sub' && ep.videos.sub) videoUrl = ep.videos.sub;
@@ -94,6 +94,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
             else videoUrl = ep.videos.sub || ep.videos.dub;
         }
 
+        // Streamtape autoplay fix
         if(videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com")){
             const baseUrl = videoUrl.split('?')[0];
             videoUrl = `${baseUrl}?autoplay=1&muted=1`;
