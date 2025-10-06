@@ -1,0 +1,90 @@
+/* Navbar Container */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #ff6600; /* BentoRoll orange bar */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo Container */
+#logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Logo Image */
+#logo-img {
+    width: 60px;
+    height: 60px;
+    transition: transform 2s ease-in-out;
+}
+
+/* Spin logo on hover */
+#logo-container:hover #logo-img {
+    transform: rotate(360deg);
+}
+
+/* Logo Text */
+#logo-text {
+    font-size: 1.8rem;
+    color: #ffffff; /* Default white text */
+    margin: 0;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Hover effect: brighter white + subtle glow */
+#logo-container:hover #logo-text {
+    color: #ffffff;
+    text-shadow: 0 0 8px #ffffff88;
+}
+
+/* Navbar Links */
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 15px;
+    transition: color 0.2s ease;
+}
+
+header nav a:hover {
+    color: #fffacd; /* optional subtle light yellow on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #logo-text {
+        font-size: 1.5rem;
+    }
+    #logo-img {
+        width: 50px;
+        height: 50px;
+    }
+    header nav a {
+        margin-left: 10px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #logo-text {
+        font-size: 1.2rem;
+    }
+    #logo-img {
+        width: 40px;
+        height: 40px;
+    }
+    header nav a {
+        margin-left: 8px;
+        font-size: 0.85rem;
+    }
+}
