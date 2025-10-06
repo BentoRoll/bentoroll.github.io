@@ -16,5 +16,19 @@
     "title": "SPY × FAMILY",
     "description": "World peace is at stake and secret agent Twilight must undergo his most difficult mission yet—pretend to be a family man. Posing as a loving husband and father, he’ll infiltrate an elite school to get close to a high-profile politician. He has the perfect cover, except his wife’s a deadly assassin and neither knows each other’s identity. But someone does, his adopted daughter who’s a telepath!",
     "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/095217fdb4f228410df09b18f151be28.jpg"
+  },
+  {
+    "slug": "dr-stone",
+    "title": "Dr. Stone",
+    "description": "After a mysterious flash turns all of humanity to stone, genius Senku Ishigami awakens thousands of years later to rebuild civilization using science. :contentReference[oaicite:0]{index=0}",
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/8f/Dr._Stone_volume_1_cover.jpg",
+    "seasons": 4,
+    "firstAired": "2019-07-05",
+    "status": "Ongoing",
+    "aliases": ["ドクターストーン", "Dr.STONE"],
+    "external": {
+      "tvdbId": 355774,
+      "imdb": "tt9679542"
+    }
   }
 ]
