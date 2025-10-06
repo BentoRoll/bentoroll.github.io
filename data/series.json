@@ -22,13 +22,6 @@
     "title": "Dr. Stone",
     "description": "After a mysterious flash turns all of humanity to stone, genius Senku Ishigami awakens thousands of years later to rebuild civilization using science. :contentReference[oaicite:0]{index=0}",
     "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/29e0d306dbff3a163acadf66a35b3cf5.jpg",
-    "seasons": 4,
-    "firstAired": "2019-07-05",
-    "status": "Ongoing",
-    "aliases": ["ドクターストーン", "Dr.STONE"],
-    "external": {
-      "tvdbId": 355774,
-      "imdb": "tt9679542"
     }
   }
 ]
