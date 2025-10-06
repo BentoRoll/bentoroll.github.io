@@ -71,8 +71,6 @@
 <main class="series-details-page">
     <h2 id="series-title" class="series-title">Loading Series...</h2>
     <p id="series-description" class="series-description"></p>
-
-    <!-- Removed duplicate "Select Season" label & dropdown -->
     <div id="season-container"></div>
 
     <h3 class="episode-list-header">Episodes</h3>
@@ -95,7 +93,6 @@ if (!seriesSlug) {
     titleEl.textContent = "Series not specified.";
     document.getElementById('episode-loading').style.display = 'none';
 } else {
-    // Load series details
     fetch('data/series.json')
     .then(res => res.json())
     .then(seriesList => {
@@ -111,14 +108,13 @@ if (!seriesSlug) {
     })
     .catch(console.error);
 
-    // Load multiple seasons
     const loadSeason = async (n) => {
         const path = `data/${seriesSlug}/season${n}.json`;
         try {
             const res = await fetch(path);
             if (!res.ok) return null;
             const data = await res.json();
-            return { season: n, episodes: data };
+            return data;
         } catch {
             return null;
         }
@@ -127,16 +123,15 @@ if (!seriesSlug) {
     const loadAllSeasons = async () => {
         const promises = [];
         for (let i = 1; i <= 10; i++) promises.push(loadSeason(i));
-        const results = (await Promise.all(promises)).filter(Boolean);
-        if (results.length === 0) throw new Error("No seasons found.");
+        const results = (await Promise.all(promises))
+            .map((eps, idx) => ({ season: idx + 1, episodes: eps }))
+            .filter(r => r.episodes);
+        if (!results.length) throw new Error("No seasons found.");
         return results;
     };
 
-    loadAllSeasons()
-    .then(seasons => {
+    loadAllSeasons().then(seasons => {
         listEl.innerHTML = '';
-
-        // Create label and selector dynamically
         const label = document.createElement('label');
         label.htmlFor = 'season-selector';
         label.textContent = 'Select Season:';
@@ -155,6 +150,10 @@ if (!seriesSlug) {
 
         seasonContainer.appendChild(label);
         seasonContainer.appendChild(selector);
+
+        // Default to the last available season
+        const defaultSeason = seasons[seasons.length - 1].season;
+        selector.value = defaultSeason;
 
         const renderSeason = (seasonNum) => {
             const seasonData = seasons.find(s => s.season == seasonNum);
@@ -182,12 +181,12 @@ if (!seriesSlug) {
             });
         };
 
-        renderSeason(1);
+        renderSeason(defaultSeason);
         selector.onchange = (e) => renderSeason(e.target.value);
     })
-    .catch(error => {
+    .catch(err => {
         document.getElementById('episode-loading').textContent = `Failed to load episodes for ${seriesSlug}.`;
-        console.error("Error loading seasons:", error);
+        console.error(err);
     });
 }
 </script>
