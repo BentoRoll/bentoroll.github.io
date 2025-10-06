@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BentoRoll - Watch Anime</title>
 <link rel="stylesheet" href="/src/styles/reset.css">
+<link rel="stylesheet" href="/src/styles/navbar.css"> <!-- navbar now fully modular -->
 <link rel="stylesheet" href="/src/styles/header.css">
 <link rel="stylesheet" href="/src/styles/hero.css">
 <link rel="stylesheet" href="/src/styles/cards.css">
@@ -130,32 +131,6 @@
     font-size: 1.1rem;
     margin: 0;
     color: #333;
-}
-
-/* Logo Spin and Color Fix */
-#logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    user-select: none;
-}
-#logo-img {
-    width: 60px;
-    height: 60px;
-    transition: transform 2s ease-in-out;
-}
-#logo-container:hover #logo-img {
-    transform: rotate(360deg);
-}
-#logo-text {
-    font-size: 1.8rem;
-    color: #ffffff; /* fixed to white */
-    margin: 0;
-    transition: color 0.3s ease;
-}
-#logo-container:hover #logo-text {
-    color: #ffcc00; /* optional hover accent */
 }
 
 /* Responsive adjustments */
