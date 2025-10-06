@@ -85,11 +85,11 @@
 </footer>
 
 <script>
-// ---------- Episode Page JS ----------
 const params = new URLSearchParams(window.location.search);
 const epNumStr = params.get('episode');
 const epNum = parseInt(epNumStr);
 const seriesSlug = params.get('series') || "gachiakuta";
+const seasonNum = parseInt(params.get('season')) || 1;
 let version = params.get('version') || 'en';
 
 const episodeTitle = document.getElementById('episode-title');
@@ -101,42 +101,36 @@ const versionButtons = document.getElementById('version-buttons');
 const intro = document.getElementById('introVideo');
 
 const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
-const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
-    window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
+const navigateToEpisode = (num, ver = version) => {
+    window.location.href = `watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${num}&version=${ver}`;
 };
 
 const showEpisode = (videoUrl) => {
-    if(!intro) return;
     intro.classList.add('video-fade-out');
     setTimeout(() => {
-        if(intro.parentNode) intro.parentNode.removeChild(intro);
+        intro.remove();
         player.style.display = 'block';
         player.src = videoUrl;
         player.allow = "autoplay; fullscreen";
     }, 300);
 };
 
-fetch(`data/${seriesSlug}/episodes.json`)
+fetch(`data/${seriesSlug}/season${seasonNum}.json`)
 .then(res => res.json())
 .then(episodes => {
     episodes.sort((a,b) => a.episode - b.episode);
-    const currentEpIndex = episodes.findIndex(e => e.episode === epNum);
-    const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
+    const currentIndex = episodes.findIndex(e => e.episode === epNum);
+    const ep = episodes[currentIndex];
 
-    if(ep){
+    if (ep) {
         let videoUrl = ep.videos?.[version] || "#";
+        if (videoUrl.includes("streamtape") || videoUrl.includes("stape.fun"))
+            videoUrl = videoUrl.split("?")[0] + "?autoplay=1";
 
-        // Streamtape autoplay fix
-        if(videoUrl && (videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com"))){
-            const baseUrl = videoUrl.split('?')[0];
-            videoUrl = `${baseUrl}?autoplay=1`;
-        }
+        episodeTitle.textContent = `${capitalize(seriesSlug)} S${seasonNum}E${ep.episode}: ${ep.title}`;
+        episodeDesc.textContent = ep.description || "No description available.";
+        document.title = `${capitalize(seriesSlug)} S${seasonNum}E${ep.episode} | BentoRoll`;
 
-        episodeTitle.textContent = `${ep.series || capitalize(seriesSlug)} Episode ${ep.episode}: ${ep.title}`;
-        episodeDesc.textContent = ep.description || "No description available for this episode.";
-        document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
-
-        // Language buttons
         versionButtons.innerHTML = '';
         Object.keys(ep.videos).forEach(lang => {
             const btn = document.createElement('button');
@@ -146,41 +140,33 @@ fetch(`data/${seriesSlug}/episodes.json`)
             versionButtons.appendChild(btn);
         });
 
-        // Previous/Next navigation
-        const prevEp = episodes[currentEpIndex - 1];
-        const nextEp = episodes[currentEpIndex + 1];
-
-        if(prevEp){
+        const prevEp = episodes[currentIndex - 1];
+        const nextEp = episodes[currentIndex + 1];
+        if (prevEp) {
             prevBtn.disabled = false;
             prevBtn.textContent = `← Ep ${prevEp.episode}`;
             prevBtn.onclick = () => navigateToEpisode(prevEp.episode, version);
-        } else prevBtn.textContent = '← First Episode';
-
-        if(nextEp){
+        }
+        if (nextEp) {
             nextBtn.disabled = false;
             nextBtn.textContent = `Ep ${nextEp.episode} →`;
             nextBtn.onclick = () => navigateToEpisode(nextEp.episode, version);
-        } else nextBtn.textContent = 'Last Episode →';
+        }
 
-        // Intro playback
         intro.onended = () => showEpisode(videoUrl);
         intro.onclick = () => showEpisode(videoUrl);
-
     } else {
-        episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
+        episodeTitle.textContent = `Episode ${epNum} not found in Season ${seasonNum}.`;
         episodeDesc.style.display = 'none';
         player.style.display = 'none';
-        versionButtons.style.display = 'none';
     }
 })
 .catch(err => {
-    console.error(err);
-    episodeTitle.textContent = "Error loading episode data.";
-    episodeDesc.style.display = 'none';
-    player.style.display = 'none';
-    versionButtons.style.display = 'none';
+    console.error("Error loading:", err);
+    episodeTitle.textContent = "Failed to load episode data.";
 });
 </script>
+
 
 <!-- Import navbar.js for logo click -->
 <script src="/src/scripts/navbar.js"></script>
