@@ -1,0 +1,74 @@
+.watch-page {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.watch-container {
+    width: 100%;
+    position: relative;
+    padding-top: 56.25%;
+    background-color: #000;
+    box-shadow: 0 8px 15px rgba(0,0,0,.5);
+    margin-top: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.episode-details {
+    padding: 20px 0;
+}
+
+.watch-title {
+    font-size: 36px;
+    font-weight: 800;
+    color: #333;
+    margin: 20px 0 10px;
+    line-height: 1.2;
+}
+
+.episode-nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.nav-button {
+    background-color: #f60;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    transition: background-color .2s, opacity .2s;
+    min-width: 150px;
+}
+
+.nav-button:hover:not(:disabled) {
+    background-color: #e05c00;
+}
+
+.nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: .6;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+}
