@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BentoRoll - Watch Anime</title>
 <link rel="stylesheet" href="/src/styles/reset.css">
-<link rel="stylesheet" href="/src/styles/navbar.css"> <!-- navbar now fully modular -->
+<link rel="stylesheet" href="/src/styles/navbar.css"> <!-- modular navbar -->
 <link rel="stylesheet" href="/src/styles/header.css">
 <link rel="stylesheet" href="/src/styles/hero.css">
 <link rel="stylesheet" href="/src/styles/cards.css">
@@ -148,7 +148,7 @@
 <body>
 
 <header>
-    <div class="logo" id="logo-container">
+    <div id="logo-container">
         <img src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo" id="logo-img">
         <h1 id="logo-text">BentoRoll</h1>
     </div>
@@ -180,14 +180,7 @@
 </footer>
 
 <script>
-// Logo click redirect to homepage if not already there
-document.getElementById('logo-container').addEventListener('click', () => {
-    if (!window.location.pathname.endsWith('index.html') && window.location.pathname !== '/') {
-        window.location.href = 'index.html';
-    }
-});
-
-// Load series cards dynamically
+// Load series dynamically
 fetch('data/series.json')
 .then(res => {
     if (!res.ok) throw new Error('Series data not found.');
@@ -200,7 +193,7 @@ fetch('data/series.json')
     seriesList.forEach(series => {
         const card = document.createElement('div');
         card.className = 'series-card';
-        card.setAttribute('tabindex','0'); // keyboard accessible
+        card.setAttribute('tabindex','0');
         card.innerHTML = `
             <img src="${series.poster}" alt="${series.title} Poster">
             <div class="series-info">
@@ -219,6 +212,9 @@ fetch('data/series.json')
     console.error(err);
 });
 </script>
+
+<!-- Modular Navbar JS -->
+<script src="/src/scripts/navbar.js"></script>
 
 </body>
 </html>
