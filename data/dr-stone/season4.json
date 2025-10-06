@@ -1,152 +1,152 @@
 [
-  {
-    "series": "Dr Stone",
-    "episode": 1,
-    "title": "Ryusui vs. Senku",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/6a0c061be83471d7cc324b3cabbe7022.jpg",
-    "description": "Senku and his companions finally set off for America in search of corn. However, a dispute arises between Ryusui and Senku shortly after they depart",
-    "videos": {
-      "en": "https://streamtape.com/e/6XX0oK3oq7U92rj/"
+    {
+        "series": "Dr Stone",
+        "episode": 1,
+        "title": "Ryusui vs. Senku",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/6a0c061be83471d7cc324b3cabbe7022.jpg",
+        "description": "Senku and his companions finally set off for America in search of corn. However, a dispute arises between Ryusui and Senku shortly after they depart",
+        "videos": {
+            "en": "https://stape.fun/e/6XX0oK3oq7U92rj/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 2,
+        "title": "Science Journey",
+        "cover": "",
+        "description": "Senku and friends embark on a scientific adventure.",
+        "videos": {
+            "en": "https://stape.fun/e/jVO9OjA2mMIzeW6/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 3,
+        "title": "Light Trap in the Darkness",
+        "cover": "",
+        "description": "The team faces unexpected challenges while exploring.",
+        "videos": {
+            "en": "https://stape.fun/e/yMZAevbQYaS1A3x/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 4,
+        "title": "Dr. X",
+        "cover": "",
+        "description": "A mysterious scientist appears, shaking things up.",
+        "videos": {
+            "en": "https://stape.fun/e/mwXq2lowd4cbAAV/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 5,
+        "title": "Doctor vs. Doctor",
+        "cover": "",
+        "description": "A scientific showdown between two brilliant minds.",
+        "videos": {
+            "en": "https://stape.fun/e/6xJ072KyqlU99r8/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 6,
+        "title": "Science Is Elegant",
+        "cover": "",
+        "description": "Senku demonstrates the beauty of science in action.",
+        "videos": {
+            "en": "https://stape.fun/e/vPybO1deqOH4ew3/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 7,
+        "title": "The Two Scientists",
+        "cover": "",
+        "description": "A collaboration forms between unlikely scientific allies.",
+        "videos": {
+            "en": "https://stape.fun/e/kZb6zjLM0vi89l/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 8,
+        "title": "Lock On",
+        "cover": "",
+        "description": "Tensions rise as the group focuses on their target.",
+        "videos": {
+            "en": "https://stape.fun/e/xeVW6gVp2xHkObB/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 9,
+        "title": "Light of Science",
+        "cover": "",
+        "description": "Senku illuminates a path forward with ingenuity.",
+        "videos": {
+            "en": "https://stape.fun/e/e391aKRbqqsYRlM/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 10,
+        "title": "Dirty Roads",
+        "cover": "",
+        "description": "The journey becomes perilous as challenges mount.",
+        "videos": {
+            "en": "https://stape.fun/e/yk2dJl6YDVH16O9/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 11,
+        "title": "Those Who Know the Rules; Those Who Make Them",
+        "cover": "",
+        "description": "Alliances and strategies are tested under pressure.",
+        "videos": {
+            "en": "https://stape.fun/e/plDMPWLkrAtD1k/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 12,
+        "title": "Reunion",
+        "cover": "",
+        "description": "Old friends meet again, changing the course of events.",
+        "videos": {
+            "en": "https://stape.fun/e/vpwyyAkb3YI4yJ6/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 13,
+        "title": "Watching at the Same Moon",
+        "cover": "",
+        "description": "The team reflects on their journey and shared goals.",
+        "videos": {
+            "en": "https://stape.fun/e/46VqzD2YVJUKg0o/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 14,
+        "title": "Earth Race",
+        "cover": "",
+        "description": "A race against time to achieve scientific breakthroughs.",
+        "videos": {
+            "en": "https://stape.fun/e/96zWvvXPr3S1Zy/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 15,
+        "title": "Diamond Heart",
+        "cover": "",
+        "description": "The climax of the season as plans reach their peak.",
+        "videos": {
+            "en": "https://stape.fun/e/6xMJbqJAY1U9a22/?autoplay=1"
+        }
     }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 2,
-    "title": "Science Journey",
-    "cover": "",
-    "description": "Senku and friends embark on a scientific adventure.",
-    "videos": {
-      "en": "https://streamtape.com/v/jVO9OjA2mMIzeW6/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 3,
-    "title": "Light Trap in the Darkness",
-    "cover": "",
-    "description": "The team faces unexpected challenges while exploring.",
-    "videos": {
-      "en": "https://streamtape.com/v/yMZAevbQYaS1A3x/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 4,
-    "title": "Dr. X",
-    "cover": "",
-    "description": "A mysterious scientist appears, shaking things up.",
-    "videos": {
-      "en": "https://streamtape.com/v/mwXq2lowd4cbAAV/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 5,
-    "title": "Doctor vs. Doctor",
-    "cover": "",
-    "description": "A scientific showdown between two brilliant minds.",
-    "videos": {
-      "en": "https://streamtape.com/v/6xJ072KyqlU99r8/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 6,
-    "title": "Science Is Elegant",
-    "cover": "",
-    "description": "Senku demonstrates the beauty of science in action.",
-    "videos": {
-      "en": "https://streamtape.com/v/vPybO1deqOH4ew3/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 7,
-    "title": "The Two Scientists",
-    "cover": "",
-    "description": "A collaboration forms between unlikely scientific allies.",
-    "videos": {
-      "en": "https://streamtape.com/v/kZb6zjLM0vi89l/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 8,
-    "title": "Lock On",
-    "cover": "",
-    "description": "Tensions rise as the group focuses on their target.",
-    "videos": {
-      "en": "https://streamtape.com/v/xeVW6gVp2xHkObB/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 9,
-    "title": "Light of Science",
-    "cover": "",
-    "description": "Senku illuminates a path forward with ingenuity.",
-    "videos": {
-      "en": "https://streamtape.com/v/e391aKRbqqsYRlM/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 10,
-    "title": "Dirty Roads",
-    "cover": "",
-    "description": "The journey becomes perilous as challenges mount.",
-    "videos": {
-      "en": "https://streamtape.com/v/yk2dJl6YDVH16O9/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 11,
-    "title": "Those Who Know the Rules; Those Who Make Them",
-    "cover": "",
-    "description": "Alliances and strategies are tested under pressure.",
-    "videos": {
-      "en": "https://streamtape.com/v/plDMPWLkrAtD1k/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 12,
-    "title": "Reunion",
-    "cover": "",
-    "description": "Old friends meet again, changing the course of events.",
-    "videos": {
-      "en": "https://streamtape.com/v/vpwyyAkb3YI4yJ6/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 13,
-    "title": "Watching at the Same Moon",
-    "cover": "",
-    "description": "The team reflects on their journey and shared goals.",
-    "videos": {
-      "en": "https://streamtape.com/v/46VqzD2YVJUKg0o/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 14,
-    "title": "Earth Race",
-    "cover": "",
-    "description": "A race against time to achieve scientific breakthroughs.",
-    "videos": {
-      "en": "https://streamtape.com/v/96zWvvXPr3S1Zy/"
-    }
-  },
-  {
-    "series": "Dr Stone",
-    "episode": 15,
-    "title": "Diamond Heart",
-    "cover": "",
-    "description": "The climax of the season as plans reach their peak.",
-    "videos": {
-      "en": "https://streamtape.com/v/6xMJbqJAY1U9a22/"
-    }
-  }
 ]
