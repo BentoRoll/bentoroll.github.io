@@ -1,0 +1,26 @@
+@media (max-width:768px){
+    .hero h2 { font-size: 36px; }
+    .series-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 20px; }
+    .hero-button { padding: 10px 25px; font-size: 15px; }
+    .series-title { font-size: 32px; }
+    .series-description { font-size: 15px; }
+    .episode-list-item { padding: 12px 15px; }
+    .episode-thumbnail { width: 140px; margin-right: 15px; }
+    .episode-number-title { font-size: 16px; }
+    .episode-description-preview { font-size: 13px; }
+    .watch-title { font-size: 26px; margin-top: 15px; }
+    .nav-button { min-width: unset; font-size: 14px; padding: 8px 15px; }
+    .watch-episode-card { flex-direction: column; }
+    .watch-episode-card img { width: 100%; border-right: none; border-bottom: 2px solid #f60; }
+    .watch-episode-info { padding: 12px 15px; }
+}
+
+@media (max-width:480px){
+    header .logo h1 { font-size: 22px; }
+    header nav a { margin-left: 15px; }
+    .hero h2 { font-size: 28px; }
+    .hero-button { padding: 8px 20px; font-size: 14px; }
+    .watch-title { font-size: 20px; font-weight: 700; }
+    .watch-page { padding: 0 10px; }
+    .episode-nav-buttons { gap: 10px; }
+}
