@@ -27,10 +27,8 @@
 <link rel="stylesheet" href="/src/styles/labels.css">
 <link rel="stylesheet" href="/src/styles/responsive.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
-
-<!-- Inline styling block for Sub/Dub buttons -->
 <style>
-/* Sub/Dub Buttons */
+/* Language Buttons (e.g., en, ja) */
 .episode-version-links {
     margin-top: 8px;
     display: flex;
@@ -47,15 +45,18 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     color: #fff;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-transform: uppercase;
 }
 
-/* Sub = blue, Dub = green */
-.episode-version-links a[href*="version=sub"] {
-    background-color: #007aff; /* bright blue */
+/* BentoRoll language colors */
+.episode-version-links a[href*="version=en"] {
+    background-color: #f60; /* BentoRoll orange */
 }
-
-.episode-version-links a[href*="version=dub"] {
-    background-color: #28a745; /* green */
+.episode-version-links a[href*="version=ja"] {
+    background-color: #007aff; /* Accent blue */
+}
+.episode-version-links a[href*="version=ko"] {
+    background-color: #28a745; /* Green for Korean, optional */
 }
 
 /* Hover Effects */
@@ -90,6 +91,7 @@
     }
 }
 </style>
+
 
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 </head>
