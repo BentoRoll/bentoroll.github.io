@@ -15,19 +15,40 @@
 <link rel="stylesheet" href="/src/styles/responsive.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 <style>
-/* Adblocker Banner Styling */
-#adblocker-banner {
-    background-color: #FFF3CD;
-    color: #856404;
-    border: 1px solid #FFE8A1;
-    padding: 15px;
-    margin: 20px auto;
-    max-width: 800px;
+/* Hero Section */
+.hero {
+    position: relative;
     text-align: center;
-    font-family: Arial, sans-serif;
+    padding: 140px 20px 100px;
+    background: linear-gradient(135deg,#ffe5cc,#fff9f0);
+    border-bottom: 2px solid #f60;
+    box-shadow: inset 0 -10px 30px rgba(0,0,0,.05);
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
+}
+.hero h2 {
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    color: #FF6600;
+}
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+.hero-button {
+    display: inline-block;
+    background-color: #FF6600;
+    color: #fff;
     font-weight: bold;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 12px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hero-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 /* Mascot Styling */
@@ -36,18 +57,90 @@
     bottom: 0;
     right: 20px;
     width: 120px;
-    transform: scaleX(-1); /* flip horizontally to face right */
+    transform: scaleX(-1);
     z-index: 2;
     pointer-events: none;
+    animation: float 4s ease-in-out infinite;
 }
-.hero {
-    position: relative; /* allow mascot to position inside hero */
+@keyframes float {
+    0%,100% { transform: translateY(0) scaleX(-1); }
+    50% { transform: translateY(-10px) scaleX(-1); }
+}
+
+/* Adblocker Banner */
+#adblocker-banner {
+    background-color: #FFF3CD;
+    color: #856404;
+    border: 1px solid #FFE8A1;
+    padding: 15px 20px;
+    margin: 20px auto;
+    max-width: 800px;
     text-align: center;
-    padding: 120px 20px 100px;
-    background: linear-gradient(135deg,#ffe5cc,#fff9f0);
-    border-bottom: 2px solid #f60;
-    box-shadow: inset 0 -10px 30px rgba(0,0,0,.05);
-    border-radius: 0 0 30px 30px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+}
+#adblocker-banner button {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #856404;
+}
+#adblocker-banner button:focus {
+    outline: 2px solid #FF6600;
+    border-radius: 50%;
+}
+
+/* Series Grid */
+.series-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.series-card {
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.series-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.series-card img {
+    width: 100%;
+    display: block;
+}
+.series-info {
+    padding: 10px 12px;
+    text-align: center;
+}
+.series-info h3 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero h2 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
+    .series-grid { grid-template-columns: repeat(auto-fill,minmax(140px,1fr)); }
+}
+@media (max-width: 480px) {
+    .hero h2 { font-size: 1.8rem; }
+    .hero p { font-size: 0.95rem; }
 }
 </style>
 </head>
@@ -68,13 +161,12 @@
         <h2>Stream Anime Instantly</h2>
         <p>Your favorite anime, anytime, anywhere.</p>
         <a href="#series-container" class="hero-button">Browse Series</a>
-        <!-- Mascot -->
         <img id="mascot" src="https://i.ibb.co/9HQ8GPYv/image.png" alt="BentoRoll Mascot">
     </section>
 
-    <!-- Adblocker Warning Below Hero Banner -->
     <div id="adblocker-banner">
         ⚠️ You need an adblocker. Some ads can be adult, malicious, or otherwise unsafe. ⚠️
+        <button onclick="this.parentElement.style.display='none'">&times;</button>
     </div>
 
     <section id="series-container" class="series-grid">
@@ -87,7 +179,7 @@
 </footer>
 
 <script>
-// Load series and create interactive cards
+// Load series cards dynamically
 fetch('data/series.json')
 .then(res => {
     if (!res.ok) throw new Error('Series data not found.');
@@ -97,10 +189,10 @@ fetch('data/series.json')
     const container = document.getElementById('series-container');
     container.innerHTML = '';
     seriesList.sort((a,b)=>a.title.localeCompare(b.title));
-
     seriesList.forEach(series => {
         const card = document.createElement('div');
         card.className = 'series-card';
+        card.setAttribute('tabindex','0'); // keyboard accessible
         card.innerHTML = `
             <img src="${series.poster}" alt="${series.title} Poster">
             <div class="series-info">
@@ -108,6 +200,7 @@ fetch('data/series.json')
             </div>
         `;
         card.onclick = () => window.location.href = `series.html?series=${series.slug}`;
+        card.onkeypress = e => { if(e.key==='Enter') card.click(); }; // keyboard navigation
         container.appendChild(card);
     });
 })
@@ -118,5 +211,6 @@ fetch('data/series.json')
     console.error(err);
 });
 </script>
+
 </body>
 </html>
