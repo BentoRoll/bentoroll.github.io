@@ -1,0 +1,35 @@
+.dub-label, .sub-label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #f60;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.2);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    z-index: 5;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.sub-label {
+    background: #007aff;
+}
+
+.dub-label {
+    background: #28a745;
+}
+
+.episode-card:hover .dub-label, .episode-card:hover .sub-label {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,.3);
+}
+
+.watch-episode-card .dub-label, .watch-episode-card .sub-label {
+    top: 15px;
+    left: 15px;
+    right: auto;
+}
