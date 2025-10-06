@@ -1,27 +1,26 @@
 [
-  {
-    "slug": "gachiakuta",
-    "title": "Gachiakuta",
-    "description": "In a floating city where the rich discard their waste—and people—Rudo is framed for murder and thrown into the Pit, where a hellscape of mutated trash beasts dwell. To survive, he must wield a new power and join the Cleaners. Rudo doesn’t just aim to battle monsters, but the corrupt who cast him into Hell.",
-    "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/0c9f7ec4c0828a17ed1e03558a1f637b.jpg"
-  },
-  {
-    "slug": "overlord",
-    "title": "Overlord",
-    "description": "When a popular MMORPG is scheduled to be shut down permanently, veteran player Momonga refuses to log out. As NPCs begin to develop personalities and minds of their own he decides to put his skills to use as the game’s new overlord.",
-    "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/59dd9785564f46c3cf2a18b38149f5a1.jpg"
-  },
-  {
-    "slug": "spy-x-family",
-    "title": "SPY × FAMILY",
-    "description": "World peace is at stake and secret agent Twilight must undergo his most difficult mission yet—pretend to be a family man. Posing as a loving husband and father, he’ll infiltrate an elite school to get close to a high-profile politician. He has the perfect cover, except his wife’s a deadly assassin and neither knows each other’s identity. But someone does, his adopted daughter who’s a telepath!",
-    "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/095217fdb4f228410df09b18f151be28.jpg"
-  },
-  {
-    "slug": "dr-stone",
-    "title": "Dr. Stone",
-    "description": "After a mysterious flash turns all of humanity to stone, genius Senku Ishigami awakens thousands of years later to rebuild civilization using science.",
-    "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/29e0d306dbff3a163acadf66a35b3cf5.jpg"
+    {
+        "slug": "gachiakuta",
+        "title": "Gachiakuta",
+        "description": "In a floating city where the rich discard their waste—and people—Rudo is framed for murder and thrown into the Pit, where a hellscape of mutated trash beasts dwell. To survive, he must wield a new power and join the Cleaners. Rudo doesn’t just aim to battle monsters, but the corrupt who cast him into Hell.",
+        "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/0c9f7ec4c0828a17ed1e03558a1f637b.jpg"
+    },
+    {
+        "slug": "overlord",
+        "title": "Overlord",
+        "description": "When a popular MMORPG is scheduled to be shut down permanently, veteran player Momonga refuses to log out. As NPCs begin to develop personalities and minds of their own he decides to put his skills to use as the game’s new overlord.",
+        "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/59dd9785564f46c3cf2a18b38149f5a1.jpg"
+    },
+    {
+        "slug": "spy-x-family",
+        "title": "SPY × FAMILY",
+        "description": "World peace is at stake and secret agent Twilight must undergo his most difficult mission yet—pretend to be a family man. Posing as a loving husband and father, he’ll infiltrate an elite school to get close to a high-profile politician. He has the perfect cover, except his wife’s a deadly assassin and neither knows each other’s identity. But someone does, his adopted daughter who’s a telepath!",
+        "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/095217fdb4f228410df09b18f151be28.jpg"
+    },
+    {
+        "slug": "dr-stone",
+        "title": "Dr. Stone",
+        "description": "After a mysterious flash turns all of humanity to stone, genius Senku Ishigami awakens thousands of years later to rebuild civilization using science.",
+        "poster": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/29e0d306dbff3a163acadf66a35b3cf5.jpg"
     }
-  }
 ]
