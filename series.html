@@ -77,11 +77,6 @@
         padding: 4px 10px;
     }
 }
-
-/* Disable clicking thumbnails */
-.episode-thumbnail a {
-    pointer-events: none;
-}
 </style>
 </head>
 <body>
@@ -148,9 +143,9 @@ if (!seriesSlug) {
             const item = document.createElement('div');
             item.className = 'episode-list-item';
 
-            // Make thumbnail clickable inert
             item.innerHTML = `
                 <div class="episode-thumbnail">
+                    <!-- Clicking thumbnail does nothing -->
                     <a href="javascript:void(0)">
                         <img src="${ep.cover}" alt="Episode ${ep.episode} thumbnail">
                     </a>
@@ -159,9 +154,9 @@ if (!seriesSlug) {
                     <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
                     <p class="episode-description-preview">${ep.description || "No description available for this episode."}</p>
                     <div class="episode-version-links">
-                        ${ep.videos?.en ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=en">EN</a>` : ''}
-                        ${ep.videos?.ja ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=ja">JA</a>` : ''}
-                        ${ep.videos?.ko ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=ko">KO</a>` : ''}
+                        ${ep.videos?.sub ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=en">EN</a>` : ''}
+                        ${ep.videos?.dub ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=ja">JA</a>` : ''}
+                        ${ep.videos?.koreandub ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=ko">KO</a>` : ''}
                     </div>
                 </div>
             `;
