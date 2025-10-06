@@ -72,8 +72,8 @@
     <h2 id="series-title" class="series-title">Loading Series...</h2>
     <p id="series-description" class="series-description"></p>
 
-    <label for="season-selector">Select Season:</label>
-    <select id="season-selector"></select>
+    <!-- Removed duplicate "Select Season" label & dropdown -->
+    <div id="season-container"></div>
 
     <h3 class="episode-list-header">Episodes</h3>
     <section id="episode-list" class="episode-list-container">
@@ -89,6 +89,7 @@ const seriesSlug = params.get('series');
 const titleEl = document.getElementById('series-title');
 const descEl = document.getElementById('series-description');
 const listEl = document.getElementById('episode-list');
+const seasonContainer = document.getElementById('season-container');
 
 if (!seriesSlug) {
     titleEl.textContent = "Series not specified.";
@@ -135,17 +136,25 @@ if (!seriesSlug) {
     .then(seasons => {
         listEl.innerHTML = '';
 
-        // Create season selector
+        // Create label and selector dynamically
+        const label = document.createElement('label');
+        label.htmlFor = 'season-selector';
+        label.textContent = 'Select Season:';
+        label.style.fontWeight = '600';
+        label.style.display = 'block';
+        label.style.marginBottom = '8px';
+
         const selector = document.createElement('select');
         selector.id = 'season-selector';
-        selector.style = "margin-bottom: 15px; padding: 8px; border-radius: 8px; font-weight: 600;";
         seasons.forEach(s => {
             const opt = document.createElement('option');
             opt.value = s.season;
             opt.textContent = `Season ${s.season}`;
             selector.appendChild(opt);
         });
-        listEl.before(selector);
+
+        seasonContainer.appendChild(label);
+        seasonContainer.appendChild(selector);
 
         const renderSeason = (seasonNum) => {
             const seasonData = seasons.find(s => s.season == seasonNum);
@@ -182,7 +191,6 @@ if (!seriesSlug) {
     });
 }
 </script>
-
 
 <script src="/src/scripts/navbar.js"></script>
 </body>
