@@ -86,83 +86,103 @@
 <script>
 const params = new URLSearchParams(window.location.search);
 const seriesSlug = params.get('series');
-const seasonParam = parseInt(params.get('season')) || 1;
-
 const titleEl = document.getElementById('series-title');
 const descEl = document.getElementById('series-description');
 const listEl = document.getElementById('episode-list');
-const selector = document.getElementById('season-selector');
 
-function loadEpisodes(series, season) {
-    document.getElementById('episode-loading').style.display = 'block';
-    listEl.innerHTML = '';
-    fetch(`data/${series}/season${season}.json`)
-    .then(res => {
-        if (!res.ok) throw new Error('Season file not found.');
-        return res.json();
-    })
-    .then(episodes => {
-        document.getElementById('episode-loading').style.display = 'none';
-        listEl.innerHTML = '';
-        episodes.sort((a,b)=>a.episode-b.episode).forEach(ep=>{
-            const item = document.createElement('div');
-            item.className = 'episode-list-item';
-            item.innerHTML = `
-                <div class="episode-thumbnail"><img src="${ep.cover}" alt="Ep ${ep.episode} thumbnail"></div>
-                <div class="episode-text-content">
-                    <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
-                    <p class="episode-description-preview">${ep.description || "No description available."}</p>
-                    <div class="episode-version-links">
-                        ${ep.videos?.en ? `<a href="watch.html?series=${series}&season=${season}&episode=${ep.episode}&version=en">EN</a>`:''}
-                        ${ep.videos?.ja ? `<a href="watch.html?series=${series}&season=${season}&episode=${ep.episode}&version=ja">JA</a>`:''}
-                        ${ep.videos?.ko ? `<a href="watch.html?series=${series}&season=${season}&episode=${ep.episode}&version=ko">KO</a>`:''}
-                    </div>
-                </div>
-            `;
-            listEl.appendChild(item);
-        });
-    })
-    .catch(err=>{
-        listEl.innerHTML = `<p>Failed to load Season ${season} episodes.</p>`;
-        console.error(err);
-    });
-}
-
-// Load series data
 if (!seriesSlug) {
     titleEl.textContent = "Series not specified.";
     document.getElementById('episode-loading').style.display = 'none';
 } else {
+    // Load series details
     fetch('data/series.json')
     .then(res => res.json())
-    .then(list => {
-        const data = list.find(s => s.slug === seriesSlug);
-        if (data) {
-            titleEl.textContent = data.title;
-            descEl.textContent = data.description || "No description available.";
-            document.title = `${data.title} | BentoRoll`;
-
-            // Fill season selector
-            const seasons = data.seasons || 1;
-            selector.innerHTML = '';
-            for (let i=1;i<=seasons;i++) {
-                const opt = document.createElement('option');
-                opt.value = i;
-                opt.textContent = `Season ${i}`;
-                if (i === seasonParam) opt.selected = true;
-                selector.appendChild(opt);
-            }
-            loadEpisodes(seriesSlug, seasonParam);
+    .then(seriesList => {
+        const seriesData = seriesList.find(s => s.slug === seriesSlug);
+        if (seriesData) {
+            titleEl.textContent = seriesData.title;
+            descEl.textContent = seriesData.description || "No description is available for this series.";
+            document.title = `${seriesData.title} | BentoRoll`;
+        } else {
+            titleEl.textContent = seriesSlug.toUpperCase();
+            descEl.textContent = "Series details not found.";
         }
-    });
+    })
+    .catch(console.error);
 
-    selector.addEventListener('change',()=>{
-        const newSeason = selector.value;
-        window.history.replaceState(null, '', `?series=${seriesSlug}&season=${newSeason}`);
-        loadEpisodes(seriesSlug, newSeason);
+    // Load multiple seasons
+    const loadSeason = async (n) => {
+        const path = `data/${seriesSlug}/season${n}.json`;
+        try {
+            const res = await fetch(path);
+            if (!res.ok) return null;
+            const data = await res.json();
+            return { season: n, episodes: data };
+        } catch {
+            return null;
+        }
+    };
+
+    const loadAllSeasons = async () => {
+        const promises = [];
+        for (let i = 1; i <= 10; i++) promises.push(loadSeason(i));
+        const results = (await Promise.all(promises)).filter(Boolean);
+        if (results.length === 0) throw new Error("No seasons found.");
+        return results;
+    };
+
+    loadAllSeasons()
+    .then(seasons => {
+        listEl.innerHTML = '';
+
+        // Create season selector
+        const selector = document.createElement('select');
+        selector.id = 'season-selector';
+        selector.style = "margin-bottom: 15px; padding: 8px; border-radius: 8px; font-weight: 600;";
+        seasons.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s.season;
+            opt.textContent = `Season ${s.season}`;
+            selector.appendChild(opt);
+        });
+        listEl.before(selector);
+
+        const renderSeason = (seasonNum) => {
+            const seasonData = seasons.find(s => s.season == seasonNum);
+            listEl.innerHTML = '';
+            seasonData.episodes.sort((a,b) => a.episode - b.episode).forEach(ep => {
+                const item = document.createElement('div');
+                item.className = 'episode-list-item';
+                item.innerHTML = `
+                    <div class="episode-thumbnail">
+                        <a href="javascript:void(0)">
+                            <img src="${ep.cover}" alt="Episode ${ep.episode} thumbnail">
+                        </a>
+                    </div>
+                    <div class="episode-text-content">
+                        <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
+                        <p class="episode-description-preview">${ep.description || "No description available for this episode."}</p>
+                        <div class="episode-version-links">
+                            ${ep.videos?.en ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=en">EN</a>` : ''}
+                            ${ep.videos?.ja ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ja">JA</a>` : ''}
+                            ${ep.videos?.ko ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ko">KO</a>` : ''}
+                        </div>
+                    </div>
+                `;
+                listEl.appendChild(item);
+            });
+        };
+
+        renderSeason(1);
+        selector.onchange = (e) => renderSeason(e.target.value);
+    })
+    .catch(error => {
+        document.getElementById('episode-loading').textContent = `Failed to load episodes for ${seriesSlug}.`;
+        console.error("Error loading seasons:", error);
     });
 }
 </script>
+
 
 <script src="/src/scripts/navbar.js"></script>
 </body>
