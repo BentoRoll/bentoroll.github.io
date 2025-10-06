@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/src/styles/watch.css">
 <link rel="stylesheet" href="/src/styles/labels.css">
 <link rel="stylesheet" href="/src/styles/responsive.css">
-    <link rel="stylesheet" href="/src/styles/navbar.css"> <!-- navbar now fully modular -->
+<link rel="stylesheet" href="/src/styles/navbar.css"> <!-- navbar now fully modular -->
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 <style>
 /* Language Buttons (EN, JA, KO) */
@@ -87,9 +87,9 @@
 </head>
 <body>
 <header>
-    <div class="logo">
-        <img src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo">
-        <h1>BentoRoll</h1>
+    <div id="logo-container">
+        <img id="logo-img" src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo">
+        <h1 id="logo-text">BentoRoll</h1>
     </div>
     <nav>
         <a href="index.html">Home</a>
@@ -149,7 +149,6 @@ if (!seriesSlug) {
             const item = document.createElement('div');
             item.className = 'episode-list-item';
 
-            // Make thumbnail clickable inert
             item.innerHTML = `
                 <div class="episode-thumbnail">
                     <a href="javascript:void(0)">
