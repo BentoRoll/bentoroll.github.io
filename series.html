@@ -13,22 +13,9 @@
 <link rel="stylesheet" href="/src/styles/watch.css">
 <link rel="stylesheet" href="/src/styles/labels.css">
 <link rel="stylesheet" href="/src/styles/responsive.css">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Series Episodes - BentoRoll</title>
-<link rel="stylesheet" href="/src/styles/reset.css">
-<link rel="stylesheet" href="/src/styles/header.css">
-<link rel="stylesheet" href="/src/styles/hero.css">
-<link rel="stylesheet" href="/src/styles/cards.css">
-<link rel="stylesheet" href="/src/styles/episodes.css">
-<link rel="stylesheet" href="/src/styles/pages.css">
-<link rel="stylesheet" href="/src/styles/watch.css">
-<link rel="stylesheet" href="/src/styles/labels.css">
-<link rel="stylesheet" href="/src/styles/responsive.css">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 <style>
-/* Language Buttons (e.g., en, ja) */
+/* Language Buttons (EN, JA, KO) */
 .episode-version-links {
     margin-top: 8px;
     display: flex;
@@ -53,10 +40,10 @@
     background-color: #f60; /* BentoRoll orange */
 }
 .episode-version-links a[href*="version=ja"] {
-    background-color: #007aff; /* Accent blue */
+    background-color: #007aff; /* BentoRoll blue accent */
 }
 .episode-version-links a[href*="version=ko"] {
-    background-color: #28a745; /* Green for Korean, optional */
+    background-color: #28a745; /* Green for Korean (optional) */
 }
 
 /* Hover Effects */
@@ -91,9 +78,6 @@
     }
 }
 </style>
-
-
-<link rel="icon" type="image/x-icon" href="https://i.ibb.co/pjJPbymj/image.png">
 </head>
 <body>
 <header>
@@ -133,7 +117,6 @@ if (!seriesSlug) {
     titleEl.textContent = "Series not specified.";
     document.getElementById('episode-loading').style.display = 'none';
 } else {
-    // Fetch series data for title/description
     fetch('data/series.json')
     .then(res => res.json())
     .then(seriesList => {
@@ -149,26 +132,20 @@ if (!seriesSlug) {
     })
     .catch(console.error);
 
-    // Fetch episode list
     fetch(`data/${seriesSlug}/episodes.json`)
     .then(res => {
         if (!res.ok) throw new Error('Episodes file not found.');
         return res.json();
     })
     .then(episodes => {
-        listEl.innerHTML = ''; // Clear loading text
-        
-        // Sort by episode number
+        listEl.innerHTML = '';
         episodes.sort((a, b) => a.episode - b.episode).forEach(ep => {
             const item = document.createElement('div');
             item.className = 'episode-list-item';
 
-            // Choose default video URL (sub if available, fallback to dub)
-            const defaultUrl = ep.videos?.sub || ep.videos?.dub || "#";
-
             item.innerHTML = `
                 <div class="episode-thumbnail">
-                    <a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=sub">
+                    <a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=en">
                         <img src="${ep.cover}" alt="Episode ${ep.episode} thumbnail">
                     </a>
                 </div>
@@ -176,8 +153,8 @@ if (!seriesSlug) {
                     <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
                     <p class="episode-description-preview">${ep.description || "No description available for this episode."}</p>
                     <div class="episode-version-links">
-                        ${ep.videos?.sub ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=sub">Sub</a>` : ''}
-                        ${ep.videos?.dub ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=dub">Dub</a>` : ''}
+                        ${ep.videos?.sub ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=en">EN</a>` : ''}
+                        ${ep.videos?.dub ? `<a href="watch.html?series=${seriesSlug}&episode=${ep.episode}&version=ja">JA</a>` : ''}
                     </div>
                 </div>
             `;
