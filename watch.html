@@ -19,6 +19,31 @@
     opacity: 0;
     transition: opacity 0.3s ease;
 }
+.version-button {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    margin-right: 8px;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.version-button:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+.version-button:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+.version-button.en { background-color: #f60; }
+.version-button.ja { background-color: #007aff; }
+.version-button.ko { background-color: #28a745; }
+.version-button.active { box-shadow: 0 6px 15px rgba(0,0,0,0.4); }
 </style>
 </head>
 <body>
@@ -34,13 +59,10 @@
 
 <main class="watch-page">
     <div class="watch-container">
-        <!-- BentoRoll intro video -->
         <video id="introVideo" autoplay playsinline class="video-player">
             <source src="https://github.com/Vystelior/bentoroll.github.io/raw/refs/heads/main/src/intro.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-
-        <!-- Episode iframe hidden initially -->
         <iframe id="player" class="video-player" frameborder="0" allowfullscreen style="display:none;"></iframe>
     </div>
     
@@ -51,12 +73,8 @@
         <div class="episode-version-buttons" id="version-buttons"></div>
 
         <div class="episode-nav-buttons">
-            <button id="prev-btn" class="nav-button prev-button" disabled>
-                &larr; Previous
-            </button>
-            <button id="next-btn" class="nav-button next-button" disabled>
-                Next &rarr;
-            </button>
+            <button id="prev-btn" class="nav-button prev-button" disabled>&larr; Previous</button>
+            <button id="next-btn" class="nav-button next-button" disabled>Next &rarr;</button>
         </div>
     </section>
 </main>
@@ -70,7 +88,7 @@ const params = new URLSearchParams(window.location.search);
 const epNumStr = params.get('episode');
 const epNum = parseInt(epNumStr);
 const seriesSlug = params.get('series') || "gachiakuta";
-let version = params.get('version') || 'sub';
+let version = params.get('version') || 'en';
 
 const episodeTitle = document.getElementById('episode-title');
 const episodeDesc = document.getElementById('episode-description');
@@ -80,43 +98,37 @@ const nextBtn = document.getElementById('next-btn');
 const versionButtons = document.getElementById('version-buttons');
 const intro = document.getElementById('introVideo');
 
+const langMap = { 'en': 'sub', 'ja': 'dub', 'ko': 'ko' };
+
 const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
 const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
     window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
 };
 
-// Function to show episode and remove intro
 const showEpisode = (videoUrl) => {
-    if(!intro) return; // already removed
+    if(!intro) return;
     intro.classList.add('video-fade-out');
     setTimeout(() => {
         if(intro.parentNode) intro.parentNode.removeChild(intro);
         player.style.display = 'block';
         player.src = videoUrl;
         player.allow = "autoplay; fullscreen";
-    }, 300); // match fade-out
+    }, 300);
 };
 
 fetch(`data/${seriesSlug}/episodes.json`)
-.then(res => {
-    if (!res.ok) throw new Error('Failed to load episodes data');
-    return res.json();
-})
+.then(res => res.json())
 .then(episodes => {
-    episodes.sort((a, b) => a.episode - b.episode);
+    episodes.sort((a,b) => a.episode - b.episode);
     const currentEpIndex = episodes.findIndex(e => e.episode === epNum);
     const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
 
     if(ep){
         let videoUrl = "#";
-        if(ep.videos){
-            if(version === 'sub' && ep.videos.sub) videoUrl = ep.videos.sub;
-            else if(version === 'dub' && ep.videos.dub) videoUrl = ep.videos.dub;
-            else videoUrl = ep.videos.sub || ep.videos.dub;
-        }
+        const actualKey = langMap[version] || 'sub';
+        videoUrl = ep.videos?.[actualKey] || ep.videos?.sub || ep.videos?.dub;
 
-        // Streamtape autoplay fix
-        if(videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com")){
+        if(videoUrl && (videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com"))){
             const baseUrl = videoUrl.split('?')[0];
             videoUrl = `${baseUrl}?autoplay=1`;
         }
@@ -126,20 +138,15 @@ fetch(`data/${seriesSlug}/episodes.json`)
         document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
 
         versionButtons.innerHTML = '';
-        if(ep.videos?.sub){
-            const subBtn = document.createElement('button');
-            subBtn.textContent = 'Sub';
-            subBtn.className = version === 'sub' ? 'version-button active' : 'version-button';
-            subBtn.onclick = () => navigateToEpisode(ep.episode, 'sub');
-            versionButtons.appendChild(subBtn);
-        }
-        if(ep.videos?.dub){
-            const dubBtn = document.createElement('button');
-            dubBtn.textContent = 'Dub';
-            dubBtn.className = version === 'dub' ? 'version-button active' : 'version-button';
-            dubBtn.onclick = () => navigateToEpisode(ep.episode, 'dub');
-            versionButtons.appendChild(dubBtn);
-        }
+        Object.entries(langMap).forEach(([lang, key]) => {
+            if(ep.videos?.[key]){
+                const btn = document.createElement('button');
+                btn.textContent = lang.toUpperCase();
+                btn.className = `version-button ${lang}` + (lang === version ? ' active' : '');
+                btn.onclick = () => navigateToEpisode(ep.episode, lang);
+                versionButtons.appendChild(btn);
+            }
+        });
 
         const prevEp = episodes[currentEpIndex - 1];
         const nextEp = episodes[currentEpIndex + 1];
@@ -156,9 +163,8 @@ fetch(`data/${seriesSlug}/episodes.json`)
             nextBtn.onclick = () => navigateToEpisode(nextEp.episode, version);
         } else nextBtn.textContent = 'Last Episode →';
 
-        // Intro playback
         intro.onended = () => showEpisode(videoUrl);
-        intro.onclick = () => showEpisode(videoUrl); // click to skip
+        intro.onclick = () => showEpisode(videoUrl);
 
     } else {
         episodeTitle.textContent = `Episode ${epNumStr} not found in series ${capitalize(seriesSlug)}.`;
@@ -167,8 +173,8 @@ fetch(`data/${seriesSlug}/episodes.json`)
         versionButtons.style.display = 'none';
     }
 })
-.catch(error => {
-    console.error("Error loading episode data:", error);
+.catch(err => {
+    console.error(err);
     episodeTitle.textContent = "Error loading episode data.";
     episodeDesc.style.display = 'none';
     player.style.display = 'none';
