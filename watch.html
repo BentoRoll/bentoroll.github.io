@@ -98,8 +98,6 @@ const nextBtn = document.getElementById('next-btn');
 const versionButtons = document.getElementById('version-buttons');
 const intro = document.getElementById('introVideo');
 
-const langMap = { 'en': 'sub', 'ja': 'dub', 'ko': 'ko' };
-
 const capitalize = s => typeof s === 'string' ? s.charAt(0).toUpperCase() + s.slice(1) : '';
 const navigateToEpisode = (newEpisodeNum, newVersion = version) => {
     window.location.href = `watch.html?series=${seriesSlug}&episode=${newEpisodeNum}&version=${newVersion}`;
@@ -124,10 +122,9 @@ fetch(`data/${seriesSlug}/episodes.json`)
     const ep = currentEpIndex !== -1 ? episodes[currentEpIndex] : null;
 
     if(ep){
-        let videoUrl = "#";
-        const actualKey = langMap[version] || 'sub';
-        videoUrl = ep.videos?.[actualKey] || ep.videos?.sub || ep.videos?.dub;
+        let videoUrl = ep.videos?.[version] || "#";
 
+        // Streamtape autoplay fix
         if(videoUrl && (videoUrl.includes("stape.fun") || videoUrl.includes("streamtape.com"))){
             const baseUrl = videoUrl.split('?')[0];
             videoUrl = `${baseUrl}?autoplay=1`;
@@ -137,17 +134,17 @@ fetch(`data/${seriesSlug}/episodes.json`)
         episodeDesc.textContent = ep.description || "No description available for this episode.";
         document.title = `${ep.series || capitalize(seriesSlug)} Ep ${ep.episode} | BentoRoll`;
 
+        // Language buttons
         versionButtons.innerHTML = '';
-        Object.entries(langMap).forEach(([lang, key]) => {
-            if(ep.videos?.[key]){
-                const btn = document.createElement('button');
-                btn.textContent = lang.toUpperCase();
-                btn.className = `version-button ${lang}` + (lang === version ? ' active' : '');
-                btn.onclick = () => navigateToEpisode(ep.episode, lang);
-                versionButtons.appendChild(btn);
-            }
+        Object.keys(ep.videos).forEach(lang => {
+            const btn = document.createElement('button');
+            btn.textContent = lang.toUpperCase();
+            btn.className = `version-button ${lang}` + (lang === version ? ' active' : '');
+            btn.onclick = () => navigateToEpisode(ep.episode, lang);
+            versionButtons.appendChild(btn);
         });
 
+        // Previous/Next navigation
         const prevEp = episodes[currentEpIndex - 1];
         const nextEp = episodes[currentEpIndex + 1];
 
@@ -163,6 +160,7 @@ fetch(`data/${seriesSlug}/episodes.json`)
             nextBtn.onclick = () => navigateToEpisode(nextEp.episode, version);
         } else nextBtn.textContent = 'Last Episode →';
 
+        // Intro playback
         intro.onended = () => showEpisode(videoUrl);
         intro.onclick = () => showEpisode(videoUrl);
 
