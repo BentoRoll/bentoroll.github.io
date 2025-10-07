@@ -116,7 +116,8 @@
         "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e52b34fcb992898034ebf253e7fa5c6d.jpg",
         "description": "",
         "videos": {
-            "en": "https://stape.fun/e/plDMPWLkrAtD1k/?autoplay=1"
+            "en": "https://stape.fun/e/plDMPWLkrAtD1k/?autoplay=1",
+            "ja": "https://stape.fun/e/DlL8vQJPoqHVjY/?autoplay=1"
         }
     },
     {
@@ -126,17 +127,19 @@
         "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/99bcf0ae94184fd44a99ca88e751b53b.jpg",
         "description": "",
         "videos": {
-            "en": "https://stape.fun/e/vpwyyAkb3YI4yJ6/?autoplay=1"
+            "en": "https://stape.fun/e/vpwyyAkb3YI4yJ6/?autoplay=1",
+            "ja": "https://stape.fun/e/9p9Y6dM6eQIYP7/?autoplay=1"
         }
     },
     {
         "series": "Dr Stone",
-        "episode": 13,
+        "episode": 13",
         "title": "Watching at the Same Moon",
         "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/24748c28aa2cb2e19c2ff555c2272261.jpg",
         "description": "",
         "videos": {
-            "en": "https://stape.fun/e/46VqzD2YVJUKg0o/?autoplay=1"
+            "en": "https://stape.fun/e/46VqzD2YVJUKg0o/?autoplay=1",
+            "ja": "https://stape.fun/e/90ebKmrmlACaMly/?autoplay=1"
         }
     },
     {
@@ -146,7 +149,8 @@
         "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/eae110146bf2d0dd02be83ce5926a9bd.jpg",
         "description": "",
         "videos": {
-            "en": "https://stape.fun/e/96zWvvXPr3S1Zy/?autoplay=1"
+            "en": "https://stape.fun/e/96zWvvXPr3S1Zy/?autoplay=1",
+            "ja": "https://stape.fun/e/rJjYzqjd3qiMDp/?autoplay=1"
         }
     },
     {
@@ -156,7 +160,8 @@
         "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/0a96eae524e5e271b0f9bf0fefa14b09.jpg",
         "description": "",
         "videos": {
-            "en": "https://stape.fun/e/6xMJbqJAY1U9a22/?autoplay=1"
+            "en": "https://stape.fun/e/6xMJbqJAY1U9a22/?autoplay=1",
+            "ja": "https://stape.fun/e/QW0BjPXwwxs0xLe/?autoplay=1"
         }
     }
 ]
