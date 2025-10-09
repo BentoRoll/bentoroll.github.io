@@ -163,5 +163,104 @@
             "en": "https://stape.fun/e/6xMJbqJAY1U9a22/?autoplay=1",
             "ja": "https://stape.fun/e/QW0BjPXwwxs0xLe/?autoplay=1"
         }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 16,
+        "title": "Medusa Mechanism",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/118c5bacb9b7e4d818560e8308c7c23f.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": "https://stape.fun/e/9WgozJw39Jsaro6/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 17,
+        "title": "Sickening Yet Beautiful",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/2cd46f31177c1567ede8b7ffd43eb7fd.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": "https://stape.fun/e/g0gv7J0J42SqQXA/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 18,
+        "title": "Diamond Heart",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/9a57afb6f16dd08c98ca6fea81200396.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": "https://stape.fun/e/Wy9p4eGoOwtrkK/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 19,
+        "title": "Stone Sanctuary",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/5e40d86898668d3be745587a4f16ae0b.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": "https://stape.fun/e/VobbwaBGDJS3v7/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 20,
+        "title": "What I Once Sought to Destroy",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/068b9461f02fac380a2e3196fc969812.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": "https://stape.fun/e/XW60kJe1mYFD7A9/?autoplay=1"
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 21,
+        "title": "Our Dr. Stone",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/42a9aa61396242bd646017c6c2dab547.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": ""
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 22,
+        "title": "Until We Meet Again",
+        "cover": "https://artworks.thetvdb.com/banners/v4/episode/11236705/screencap/68c017e3dd691.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": ""
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 23,
+        "title": "Scientist, All Alone",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/dc04851fedfd5065bc563f2bce7639b6.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": ""
+        }
+    },
+    {
+        "series": "Dr Stone",
+        "episode": 24,
+        "title": "Whole New World",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/fad079927af6ce33ef4e7107b450e5d6.jpg",
+        "description": "",
+        "videos": {
+            "en": "",
+            "ja": ""
+        }
     }
 ]
