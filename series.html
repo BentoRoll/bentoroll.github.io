@@ -18,74 +18,65 @@
 <style>
 /* --- Season Selector --- */
 #season-selector {
-  margin: 10px 0 20px;
-  padding: 8px 14px;
-  border-radius: 10px;
-  border: none;
-  font-size: 15px;
-  font-weight: 600;
-  background-color: #f60;
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    margin: 10px 0 20px;
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #f60;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 #season-selector:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
 /* Language Buttons */
 .episode-version-links {
-  margin-top: 8px;
-  display: flex;
-  gap: 10px;
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
 }
 .episode-version-links a {
-  display: inline-block;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 14px;
-  text-decoration: none;
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: 0.2s;
-  text-transform: uppercase;
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.2s;
+    text-transform: uppercase;
 }
 .episode-version-links a[href*="version=en"] { background-color: #f60; }
 .episode-version-links a[href*="version=ja"] { background-color: #007aff; }
 .episode-version-links a[href*="version=ko"] { background-color: #28a745; }
 .episode-version-links a:hover { transform: scale(1.05); }
 .episode-thumbnail a { pointer-events: none; }
-
-/* --- Fade In Animation --- */
-.episode-thumbnail img {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-.episode-thumbnail img.loaded {
-  opacity: 1;
-}
 </style>
 </head>
 <body>
 <header>
-  <div id="logo-container">
-    <img id="logo-img" src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo">
-    <h1 id="logo-text">BentoRoll</h1>
-  </div>
-  <nav><a href="index.html">Home</a></nav>
+    <div id="logo-container">
+        <img id="logo-img" src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo">
+        <h1 id="logo-text">BentoRoll</h1>
+    </div>
+    <nav><a href="index.html">Home</a></nav>
 </header>
 
 <main class="series-details-page">
-  <h2 id="series-title" class="series-title">Loading Series...</h2>
-  <p id="series-description" class="series-description"></p>
-  <div id="season-container"></div>
+    <h2 id="series-title" class="series-title">Loading Series...</h2>
+    <p id="series-description" class="series-description"></p>
+    <div id="season-container"></div>
 
-  <h3 class="episode-list-header">Episodes</h3>
-  <section id="episode-list" class="episode-list-container">
-    <div id="episode-loading">Loading episodes...</div>
-  </section>
+    <h3 class="episode-list-header">Episodes</h3>
+    <section id="episode-list" class="episode-list-container">
+        <div id="episode-loading">Loading episodes...</div>
+    </section>
 </main>
 
 <footer><p>&copy; 2025 BentoRoll. All rights not reserved.</p></footer>
@@ -99,158 +90,104 @@ const listEl = document.getElementById('episode-list');
 const seasonContainer = document.getElementById('season-container');
 
 if (!seriesSlug) {
-  titleEl.textContent = "Series not specified.";
-  document.getElementById('episode-loading').style.display = 'none';
+    titleEl.textContent = "Series not specified.";
+    document.getElementById('episode-loading').style.display = 'none';
 } else {
-  fetch('data/series.json')
+    fetch('data/series.json')
     .then(res => res.json())
     .then(seriesList => {
-      const seriesData = seriesList.find(s => s.slug === seriesSlug);
-      if (seriesData) {
-        titleEl.textContent = seriesData.title;
-        descEl.textContent = seriesData.description || "No description is available for this series.";
-        document.title = `${seriesData.title} | BentoRoll`;
-      } else {
-        titleEl.textContent = seriesSlug.toUpperCase();
-        descEl.textContent = "Series details not found.";
-      }
+        const seriesData = seriesList.find(s => s.slug === seriesSlug);
+        if (seriesData) {
+            titleEl.textContent = seriesData.title;
+            descEl.textContent = seriesData.description || "No description is available for this series.";
+            document.title = `${seriesData.title} | BentoRoll`;
+        } else {
+            titleEl.textContent = seriesSlug.toUpperCase();
+            descEl.textContent = "Series details not found.";
+        }
     })
     .catch(console.error);
 
-  const loadSeason = async (n) => {
-    const path = `data/${seriesSlug}/season${n}.json`;
-    try {
-      const res = await fetch(path);
-      if (!res.ok) return null;
-      return await res.json();
-    } catch {
-      return null;
-    }
-  };
-
-  const loadAllSeasons = async () => {
-    const promises = [];
-    for (let i = 1; i <= 10; i++) promises.push(loadSeason(i));
-    const results = (await Promise.all(promises))
-      .map((eps, idx) => ({ season: idx + 1, episodes: eps }))
-      .filter(r => r.episodes);
-    if (!results.length) throw new Error("No seasons found.");
-    return results;
-  };
-
-  // --- Jikan fallback built directly in this file ---
-  async function fetchJikanFallback(series, episodeNum) {
-    try {
-      const search = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(series)}&limit=1`);
-      const searchData = await search.json();
-      if (!searchData.data?.length) return null;
-      const animeId = searchData.data[0].mal_id;
-
-      const epRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/episodes/${episodeNum}`);
-      const epData = await epRes.json();
-      if (!epData.data) return null;
-
-      return {
-        title: epData.data.title,
-        overview: epData.data.synopsis || "No description available.",
-        cover: epData.data.images?.jpg?.image_url || searchData.data[0].images?.jpg?.image_url || null
-      };
-    } catch (err) {
-      console.error("Jikan fallback error:", err);
-      return null;
-    }
-  }
-
-  function fadeInImage(img) {
-    img.classList.add("loaded");
-  }
-
-  loadAllSeasons().then(seasons => {
-    listEl.innerHTML = '';
-    const label = document.createElement('label');
-    label.htmlFor = 'season-selector';
-    label.textContent = 'Select Season:';
-    label.style.fontWeight = '600';
-    label.style.display = 'block';
-    label.style.marginBottom = '8px';
-
-    const selector = document.createElement('select');
-    selector.id = 'season-selector';
-    seasons.forEach(s => {
-      const opt = document.createElement('option');
-      opt.value = s.season;
-      opt.textContent = `Season ${s.season}`;
-      selector.appendChild(opt);
-    });
-
-    seasonContainer.appendChild(label);
-    seasonContainer.appendChild(selector);
-
-    const defaultSeason = seasons[seasons.length - 1].season;
-    selector.value = defaultSeason;
-
-    const renderSeason = async (seasonNum) => {
-      const seasonData = seasons.find(s => s.season == seasonNum);
-      listEl.innerHTML = '';
-      document.getElementById('episode-loading')?.remove();
-
-      for (const ep of seasonData.episodes.sort((a,b) => a.episode - b.episode)) {
-        const item = document.createElement('div');
-        item.className = 'episode-list-item';
-
-        const coverImg = document.createElement('img');
-        coverImg.src = ep.cover || 'https://i.ibb.co/7v0YbVn/no-image.jpg';
-        coverImg.alt = `Episode ${ep.episode} thumbnail`;
-        coverImg.onload = () => fadeInImage(coverImg);
-
-        item.innerHTML = `
-          <div class="episode-thumbnail"></div>
-          <div class="episode-text-content">
-            <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
-            <p class="episode-description-preview">${ep.description || "No description available for this episode."}</p>
-            <div class="episode-version-links">
-              ${ep.videos?.en ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=en">EN</a>` : ''}
-              ${ep.videos?.ja ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ja">JA</a>` : ''}
-              ${ep.videos?.ko ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ko">KO</a>` : ''}
-            </div>
-          </div>
-        `;
-
-        item.querySelector('.episode-thumbnail').appendChild(coverImg);
-        listEl.appendChild(item);
-      }
-
-      // Fetch fallback data one-by-one (smooth)
-      const episodeCards = listEl.querySelectorAll('.episode-list-item');
-      for (let i = 0; i < episodeCards.length; i++) {
-        const card = episodeCards[i];
-        const epNum = seasonData.episodes[i].episode;
-        const img = card.querySelector('img');
-        const desc = card.querySelector('.episode-description-preview');
-
-        if (img.src.includes('no-image') || desc.textContent.includes('No description')) {
-          const fallback = await fetchJikanFallback(seriesSlug, epNum);
-          if (fallback) {
-            if (fallback.cover && img.src.includes('no-image')) {
-              img.src = fallback.cover;
-              img.onload = () => fadeInImage(img);
-            }
-            if (fallback.overview && desc.textContent.includes('No description')) {
-              desc.textContent = fallback.overview;
-            }
-          }
-          await new Promise(r => setTimeout(r, 400)); // prevent rate-limit
+    const loadSeason = async (n) => {
+        const path = `data/${seriesSlug}/season${n}.json`;
+        try {
+            const res = await fetch(path);
+            if (!res.ok) return null;
+            const data = await res.json();
+            return data;
+        } catch {
+            return null;
         }
-      }
     };
 
-    renderSeason(defaultSeason);
-    selector.onchange = (e) => renderSeason(e.target.value);
-  })
-  .catch(err => {
-    document.getElementById('episode-loading').textContent = `Failed to load episodes for ${seriesSlug}.`;
-    console.error(err);
-  });
+    const loadAllSeasons = async () => {
+        const promises = [];
+        for (let i = 1; i <= 10; i++) promises.push(loadSeason(i));
+        const results = (await Promise.all(promises))
+            .map((eps, idx) => ({ season: idx + 1, episodes: eps }))
+            .filter(r => r.episodes);
+        if (!results.length) throw new Error("No seasons found.");
+        return results;
+    };
+
+    loadAllSeasons().then(seasons => {
+        listEl.innerHTML = '';
+        const label = document.createElement('label');
+        label.htmlFor = 'season-selector';
+        label.textContent = 'Select Season:';
+        label.style.fontWeight = '600';
+        label.style.display = 'block';
+        label.style.marginBottom = '8px';
+
+        const selector = document.createElement('select');
+        selector.id = 'season-selector';
+        seasons.forEach(s => {
+            const opt = document.createElement('option');
+            opt.value = s.season;
+            opt.textContent = `Season ${s.season}`;
+            selector.appendChild(opt);
+        });
+
+        seasonContainer.appendChild(label);
+        seasonContainer.appendChild(selector);
+
+        // Default to the last available season
+        const defaultSeason = seasons[seasons.length - 1].season;
+        selector.value = defaultSeason;
+
+        const renderSeason = (seasonNum) => {
+            const seasonData = seasons.find(s => s.season == seasonNum);
+            listEl.innerHTML = '';
+            seasonData.episodes.sort((a,b) => a.episode - b.episode).forEach(ep => {
+                const item = document.createElement('div');
+                item.className = 'episode-list-item';
+                item.innerHTML = `
+                    <div class="episode-thumbnail">
+                        <a href="javascript:void(0)">
+                            <img src="${ep.cover}" alt="Episode ${ep.episode} thumbnail">
+                        </a>
+                    </div>
+                    <div class="episode-text-content">
+                        <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
+                        <p class="episode-description-preview">${ep.description || "No description available for this episode."}</p>
+                        <div class="episode-version-links">
+                            ${ep.videos?.en ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=en">EN</a>` : ''}
+                            ${ep.videos?.ja ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ja">JA</a>` : ''}
+                            ${ep.videos?.ko ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ko">KO</a>` : ''}
+                        </div>
+                    </div>
+                `;
+                listEl.appendChild(item);
+            });
+        };
+
+        renderSeason(defaultSeason);
+        selector.onchange = (e) => renderSeason(e.target.value);
+    })
+    .catch(err => {
+        document.getElementById('episode-loading').textContent = `Failed to load episodes for ${seriesSlug}.`;
+        console.error(err);
+    });
 }
 </script>
 
