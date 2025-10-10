@@ -1,211 +1,255 @@
 [
-  {
-    "series": "SPY x FAMILY",
-    "episode": 1,
-    "title": "OPERATION STRIX",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/912c6649b95f7303fc999994388fc3c7.jpg",
-    "description": "Twilight is an agent that works for WISE, Westalis's intelligence agency, and he is tasked with investigating Desmond, who is in Ostania and planning to start a war. Twilight disguises himself as the psychiatrist Loid Forger and adopts a girl named Anya so that he can enroll her into the prestigious Eden College to get closer to his target. Unbeknownst to him, Anya is actually a telepath who can read people's minds. One day, members of a mafia group that is after Twilight kidnaps Anya. Loid realizes that he needs to reconsider his priorities and...",
-    "videos": {
-      "ja": "https://stape.fun/e/B7gqJLJLmehyqqP/?autoplay=1",
-      "en": "https://stape.fun/e/08oAxeX7aMcbXjO/?autoplay=1"
+    {
+        "series": "SPY x FAMILY",
+        "episode": 1,
+        "title": "OPERATION STRIX",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/912c6649b95f7303fc999994388fc3c7.jpg",
+        "description": "Twilight is an agent that works for WISE, Westalis's intelligence agency, and he is tasked with investigating Desmond, who is in Ostania and planning to start a war. Twilight disguises himself as the psychiatrist Loid Forger and adopts a girl named Anya so that he can enroll her into the prestigious Eden College to get closer to his target. Unbeknownst to him, Anya is actually a telepath who can read people's minds. One day, members of a mafia group that is after Twilight kidnaps Anya. Loid realizes that he needs to reconsider his priorities and...",
+        "videos": {
+            "ja": "https://stape.fun/e/B7gqJLJLmehyqqP/?autoplay=1",
+            "en": "https://stape.fun/e/08oAxeX7aMcbXjO/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 2,
+        "title": "SECURE A WIFE",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/7141119e1b642e1359d1b715d727e86e.jpg",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/Dq04o7gVglHkj4J/?autoplay=1",
+            "en": "https://stape.fun/e/6KW36OdQR6I97vQ/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 3,
+        "title": "PREPARE FOR THE INTERVIEW",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/d31792385e10b79c5e8f1b7d233ada23.jpg",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/qMvPDvBDa7HA1J/?autoplay=1",
+            "en": "https://stape.fun/e/agzKzlAePLSM2V/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 4,
+        "title": "THE PRESTIGIOUS SCHOOL'S INTERVIEW",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/44b97514760c0116a45fa88abceb68a3.jpg",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/2O07rW6vo8TZbzG/?autoplay=1",
+            "en": "https://stape.fun/e/3PYROXB9ymIdzx4/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 5,
+        "title": "WILL THEY PASS OR FAIL?",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e54fb846366568ad2001719ac5fa0e98.jpg",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/gwQ3pv0WGXUxXv/?autoplay=1",
+            "en": "https://stape.fun/e/4z9oLVaDxYIJP4/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 6,
+        "title": "THE FRIENDSHIP SCHEME",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f2b5f6e4669dd5636fbb3132e88f2742.jpg",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/mDJgzBQRl4Ubb7z/?autoplay=1",
+            "en": "https://stape.fun/e/zVboXYm7dMFYMkw/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 7,
+        "title": "THE TARGET'S SECOND SON",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f5672b554366892089ec48be095910a2.jpg",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/1A68QJ1WLWSeZo2/?autoplay=1",
+            "en": "https://stape.fun/e/ygWXGDPZyMhwkg/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 8,
+        "title": "THE COUNTER-SECRET POLICE COVER OPERATION",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/OqLV9bVwq8TZRVb/?autoplay=1",
+            "en": "https://stape.fun/e/J0xGV0QPgJIZxp/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 9,
+        "title": "SHOW OFF HOW IN LOVE YOU ARE",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/kw3Xb1vM1jiOMYe/?autoplay=1",
+            "en": "https://stape.fun/e/YyZdxBMr1Viv8kY/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 10,
+        "title": "THE GREAT DODGEBALL PLAN",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/XzBWg99aMdHPV1/?autoplay=1",
+            "en": "https://stape.fun/e/zPdr1JB4DqFYZKk/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 11,
+        "title": "STELLA",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/do2ekdJeOgfPW0/?autoplay=1",
+            "en": "https://stape.fun/e/x9Bp6OQO4WFkLk1/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 12,
+        "title": "PENGUIN PARK",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/LMP1DyyMZBsRplL/?autoplay=1",
+            "en": "https://stape.fun/e/pdJzkPp1Kacrp2v/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 13,
+        "title": "PROJECT APPLE",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/7DODM360PzHJMZ/?autoplay=1",
+            "en": "https://stape.fun/e/23eBGyr2R4sZYga/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 14,
+        "title": "DISARM THE TIME BOMB",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/elrJQd2zo4FYVOK/?autoplay=1",
+            "en": "https://stape.fun/e/G99Aqla6zaT1JR8/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 15,
+        "title": "A NEW FAMILY MEMBER",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "ja": "https://stape.fun/e/bZr33P0j4KtP1px/?autoplay=1",
+            "en": "https://stape.fun/e/OdGwQyjqmgFZbWj/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 22,
+        "title": "Episode 22",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/9qOMyxx63Mi6mL/?autoplay=1",
+            "ja": "https://stape.fun/e/AQlWe1bwG6T4zw/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 23,
+        "title": "Episode 23",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/QPW32JbW20ugmq/?autoplay=1",
+            "ja": "https://stape.fun/e/kk72llZPxzIO7e9/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 24,
+        "title": "Episode 24",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/zrzOj4ol8MTYALR/?autoplay=1",
+            "ja": "https://stape.fun/e/a4jGeeYryQux7Gp/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 25,
+        "title": "Episode 25",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/QAbL37kp16I9Vw/?autoplay=1",
+            "ja": "https://stape.fun/e/zrOjD04eYbHYL36/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 22,
+        "title": "Episode 22",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/9qOMyxx63Mi6mL/?autoplay=1",
+            "ja": "https://stape.fun/e/AQlWe1bwG6T4zw/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 23,
+        "title": "Episode 23",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/QPW32JbW20ugmq/?autoplay=1",
+            "ja": "https://stape.fun/e/kk72llZPxzIO7e9/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 24,
+        "title": "Episode 24",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/zrzOj4ol8MTYALR/?autoplay=1",
+            "ja": "https://stape.fun/e/a4jGeeYryQux7Gp/?autoplay=1"
+        }
+    },
+    {
+        "series": "SPY x FAMILY",
+        "episode": 25,
+        "title": "Episode 25",
+        "cover": "",
+        "description": "",
+        "videos": {
+            "en": "https://stape.fun/e/QAbL37kp16I9Vw/?autoplay=1",
+            "ja": "https://stape.fun/e/zrOjD04eYbHYL36/?autoplay=1"
+        }
     }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 2,
-    "title": "SECURE A WIFE",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/7141119e1b642e1359d1b715d727e86e.jpg",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/Dq04o7gVglHkj4J/?autoplay=1",
-      "en": "https://stape.fun/e/6KW36OdQR6I97vQ/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 3,
-    "title": "PREPARE FOR THE INTERVIEW",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/d31792385e10b79c5e8f1b7d233ada23.jpg",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/qMvPDvBDa7HA1J/?autoplay=1",
-      "en": "https://stape.fun/e/agzKzlAePLSM2V/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 4,
-    "title": "THE PRESTIGIOUS SCHOOL'S INTERVIEW",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/44b97514760c0116a45fa88abceb68a3.jpg",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/2O07rW6vo8TZbzG/?autoplay=1",
-      "en": "https://stape.fun/e/3PYROXB9ymIdzx4/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 5,
-    "title": "WILL THEY PASS OR FAIL?",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e54fb846366568ad2001719ac5fa0e98.jpg",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/gwQ3pv0WGXUxXv/?autoplay=1",
-      "en": "https://stape.fun/e/4z9oLVaDxYIJP4/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 6,
-    "title": "THE FRIENDSHIP SCHEME",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f2b5f6e4669dd5636fbb3132e88f2742.jpg",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/mDJgzBQRl4Ubb7z/?autoplay=1",
-      "en": "https://stape.fun/e/zVboXYm7dMFYMkw/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 7,
-    "title": "THE TARGET'S SECOND SON",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f5672b554366892089ec48be095910a2.jpg",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/1A68QJ1WLWSeZo2/?autoplay=1",
-      "en": "https://stape.fun/e/ygWXGDPZyMhwkg/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 8,
-    "title": "THE COUNTER-SECRET POLICE COVER OPERATION",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/OqLV9bVwq8TZRVb/?autoplay=1",
-      "en": "https://stape.fun/e/J0xGV0QPgJIZxp/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 9,
-    "title": "SHOW OFF HOW IN LOVE YOU ARE",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/kw3Xb1vM1jiOMYe/?autoplay=1",
-      "en": "https://stape.fun/e/YyZdxBMr1Viv8kY/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 10,
-    "title": "THE GREAT DODGEBALL PLAN",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/XzBWg99aMdHPV1/?autoplay=1",
-      "en": "https://stape.fun/e/zPdr1JB4DqFYZKk/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 11,
-    "title": "STELLA",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/do2ekdJeOgfPW0/?autoplay=1",
-      "en": "https://stape.fun/e/x9Bp6OQO4WFkLk1/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 12,
-    "title": "PENGUIN PARK",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/LMP1DyyMZBsRplL/?autoplay=1",
-      "en": "https://stape.fun/e/pdJzkPp1Kacrp2v/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 13,
-    "title": "PROJECT APPLE",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/7DODM360PzHJMZ/?autoplay=1",
-      "en": "https://stape.fun/e/23eBGyr2R4sZYga/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 14,
-    "title": "DISARM THE TIME BOMB",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/elrJQd2zo4FYVOK/?autoplay=1",
-      "en": "https://stape.fun/e/G99Aqla6zaT1JR8/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 15,
-    "title": "A NEW FAMILY MEMBER",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "ja": "https://stape.fun/e/bZr33P0j4KtP1px/?autoplay=1",
-      "en": "https://stape.fun/e/OdGwQyjqmgFZbWj/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 22,
-    "title": "Episode 22",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "en": "https://stape.fun/e/9qOMyxx63Mi6mL/?autoplay=1",
-      "ja": "https://stape.fun/e/AQlWe1bwG6T4zw/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 23,
-    "title": "Episode 23",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "en": "https://stape.fun/e/QPW32JbW20ugmq/?autoplay=1",
-      "ja": "https://stape.fun/e/kk72llZPxzIO7e9/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 24,
-    "title": "Episode 24",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "en": "https://stape.fun/e/zrzOj4ol8MTYALR/?autoplay=1",
-      "ja": "https://stape.fun/e/a4jGeeYryQux7Gp/?autoplay=1"
-    }
-  },
-  {
-    "series": "SPY x FAMILY",
-    "episode": 25,
-    "title": "Episode 25",
-    "cover": "",
-    "description": "",
-    "videos": {
-      "en": "https://stape.fun/e/QAbL37kp16I9Vw/?autoplay=1",
-      "ja": "https://stape.fun/e/zrOjD04eYbHYL36/?autoplay=1"
-    }
-  }
 ]
