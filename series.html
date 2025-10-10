@@ -130,6 +130,24 @@ if (!seriesSlug) {
         return results;
     };
 
+    // TVDB fallback function
+    const fetchFallback = async (ep, seasonNum) => {
+        if (ep.cover && ep.description) return ep; // already has data
+        try {
+            const res = await fetch(`/api/tvdbFallback?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}`);
+            if (!res.ok) return ep;
+            const data = await res.json();
+            return {
+                ...ep,
+                title: ep.title || data.title,
+                description: ep.description || data.description,
+                cover: ep.cover || data.cover
+            };
+        } catch {
+            return ep;
+        }
+    };
+
     loadAllSeasons().then(seasons => {
         listEl.innerHTML = '';
         const label = document.createElement('label');
@@ -155,30 +173,31 @@ if (!seriesSlug) {
         const defaultSeason = seasons[seasons.length - 1].season;
         selector.value = defaultSeason;
 
-        const renderSeason = (seasonNum) => {
+        const renderSeason = async (seasonNum) => {
             const seasonData = seasons.find(s => s.season == seasonNum);
             listEl.innerHTML = '';
-            seasonData.episodes.sort((a,b) => a.episode - b.episode).forEach(ep => {
+            for (let ep of seasonData.episodes.sort((a,b) => a.episode - b.episode)) {
+                const epData = await fetchFallback(ep, seasonNum);
                 const item = document.createElement('div');
                 item.className = 'episode-list-item';
                 item.innerHTML = `
                     <div class="episode-thumbnail">
                         <a href="javascript:void(0)">
-                            <img src="${ep.cover}" alt="Episode ${ep.episode} thumbnail">
+                            <img src="${epData.cover}" alt="Episode ${epData.episode} thumbnail">
                         </a>
                     </div>
                     <div class="episode-text-content">
-                        <p class="episode-number-title">E${ep.episode} - ${ep.title}</p>
-                        <p class="episode-description-preview">${ep.description || "No description available for this episode."}</p>
+                        <p class="episode-number-title">E${epData.episode} - ${epData.title}</p>
+                        <p class="episode-description-preview">${epData.description || "No description available for this episode."}</p>
                         <div class="episode-version-links">
-                            ${ep.videos?.en ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=en">EN</a>` : ''}
-                            ${ep.videos?.ja ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ja">JA</a>` : ''}
-                            ${ep.videos?.ko ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${ep.episode}&version=ko">KO</a>` : ''}
+                            ${epData.videos?.en ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${epData.episode}&version=en">EN</a>` : ''}
+                            ${epData.videos?.ja ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${epData.episode}&version=ja">JA</a>` : ''}
+                            ${epData.videos?.ko ? `<a href="watch.html?series=${seriesSlug}&season=${seasonNum}&episode=${epData.episode}&version=ko">KO</a>` : ''}
                         </div>
                     </div>
                 `;
                 listEl.appendChild(item);
-            });
+            }
         };
 
         renderSeason(defaultSeason);
