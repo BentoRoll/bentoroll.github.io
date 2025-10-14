@@ -1,8 +1,11 @@
 # BentoRoll
 
 <p align="center">
-  <img src="https://i.ibb.co/nMSqnNjf/Bento-Roll.png" alt="BentoRoll Logo" width="250" />
+  <a href="https://bentoroll.vercel.app" target="_blank" rel="noopener noreferrer">
+    <img src="https://i.ibb.co/nMSqnNjf/Bento-Roll.png" alt="BentoRoll Logo" width="250" />
+  </a>
 </p>
+
 
 **BentoRoll** is a lightweight, static website designed to serve as an anime backup and episode index. Hosted on GitHub Pages, it allows users to browse and access anime episodes through direct links, ensuring a reliable and organized archive.
 
