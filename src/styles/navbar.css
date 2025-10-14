@@ -4,7 +4,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #ff6600; /* BentoRoll orange bar */
+    background-color: #e1501d; /* BentoRoll orange bar */
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
