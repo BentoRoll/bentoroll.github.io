@@ -1,8 +1,7 @@
 # BentoRoll
 
 <p align="center">
-  <img src="https://i.ibb.co/pjJPbymj/image.png" alt="BentoRoll Logo" width="150" />
-  <img src="https://i.ibb.co/9HQ8GPYv/image.png" alt="BentoRoll Mascot" width="150" />
+  <img src="https://i.ibb.co/nMSqnNjf/Bento-Roll.png" alt="BentoRoll Logo" width="250" />
 </p>
 
 **BentoRoll** is a lightweight, static website designed to serve as an anime backup and episode index. Hosted on GitHub Pages, it allows users to browse and access anime episodes through direct links, ensuring a reliable and organized archive.
@@ -86,6 +85,10 @@ This structure allows for easy addition of new series and episodes.
 * Add a "Continue Watching" feature using browser storage.
 * Integrate a backend API for dynamic content management.
 * Enhance mobile responsiveness and performance.
+
+<p align="center">
+  <img src="https://i.ibb.co/9HQ8GPYv/image.png" alt="BentoRoll Mascot" width="150" />
+</p>
 
 ## 🤝 Contributing
 
