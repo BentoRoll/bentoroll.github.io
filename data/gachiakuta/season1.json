@@ -1,145 +1,156 @@
 [
-  {
-    "series": "Gachiakuta",
-    "episode": 1,
-    "title": "The Sphere",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/7d70352b48a2da3e58baab70cb317861.jpg",
-    "description": "Bullied outcast Rudo finds respite in repurposing trash, until a terrible tragedy changes his life forever.",
-    "videos": {
-      "ja": "https://stape.fun/e/vw2k29byeyC46J1?autoplay=1",
-      "en": "https://stape.fun/e/o9LaBxYpD3hJlMr?autoplay=1"
+    {
+        "series": "Gachiakuta",
+        "episode": 1,
+        "title": "The Sphere",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/7d70352b48a2da3e58baab70cb317861.jpg",
+        "description": "Bullied outcast Rudo finds respite in repurposing trash, until a terrible tragedy changes his life forever.",
+        "videos": {
+            "ja": "https://stape.fun/e/vw2k29byeyC46J1?autoplay=1",
+            "en": "https://stape.fun/e/o9LaBxYpD3hJlMr?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 2,
+        "title": "The Inhabited",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/13ad7d6c53cb800c8eda056156e491f3.jpg",
+        "description": "Cast into the Pit, Rudo is saved by the mysterious Enjin who may not have his best interests at heart.",
+        "videos": {
+            "ja": "https://stape.fun/e/q3PWvvq3o0TzQ4x/?autoplay=1",
+            "en": "https://stape.fun/e/41bbwjP48VhKMvl/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 3,
+        "title": "The Ground",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/4900bcc2f9957ad5f685eabda139b3e4.jpg",
+        "description": "Enjin teaches Rudo about life on the Ground, but an encounter with a churlish stranger may cut his time short.",
+        "videos": {
+            "ja": "https://stape.fun/e/xmMq3kW0oOIDbV/?autoplay=1",
+            "en": "https://stape.fun/e/wlqM6Q3JRzsJ0Rg/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 4,
+        "title": "Cleaner HQ",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e155e6dd1ea5b77efaf88ef35e63acd6.jpg",
+        "description": "After being introduced to Cleaner HQ, Rudo follows Riyo on a job to learn the business.",
+        "videos": {
+            "ja": "https://stape.fun/e/RwBZO4yLzbsdrmZ/?autoplay=1",
+            "en": "https://stape.fun/e/XgzXWj4b9kCDaYk/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 5,
+        "title": "Raiders",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f3c9f6fb35d0ad08e0c414e78a6ddcd0.jpg",
+        "description": "The Cleaners go on a job to save another Sphereite who survived the fall. Rudo tags along to learn more.",
+        "videos": {
+            "ja": "https://stape.fun/e/Q3OJjG33R4CRz2/?autoplay=1",
+            "en": "https://stape.fun/e/Wb6eRxXgWPtbabv/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 6,
+        "title": "One Good Strike!!",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/11e3e8783229b5eb1f65d0cd143da20c.jpg",
+        "description": "With the job having gone terribly wrong, Rudo finds himself face to face with a merciless Raider named Jabber.",
+        "videos": {
+            "ja": "https://stape.fun/e/OqLqQRwPXJCZb2B/?autoplay=1",
+            "en": "https://stape.fun/e/QXB0VWWzrec0b2w/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 7,
+        "title": "A Score to Settle",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/23b0df11100fb97461786957a5e3eaee.jpg",
+        "description": "Jabber employs a new strategy to get through Rudo's defenses, and another ally joins the fray.",
+        "videos": {
+            "ja": "https://stape.fun/e/7KkAjVpDXmcAAmD/?autoplay=1",
+            "en": "https://stape.fun/e/OPerbpDmwbF776/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 8,
+        "title": "Moving Forward",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/af309d65f6da57b817ea01471209894f.jpg",
+        "description": "Rudo deals with the emotional aftermath of the Jabber fight and gets a new lead about returning to the Sphere.",
+        "videos": {
+            "ja": "https://stape.fun/e/pLvwAjZe4bIVDP/?autoplay=1",
+            "en": "https://stape.fun/e/MywwArkkbximk1o/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 9,
+        "title": "The City of Graffiti",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/b069a42ddf5a58ea6494c18c849deea3.jpg",
+        "description": "To get a \"spell\" for their next mission, the Cleaners head to Canvas Town, where they make a tragic discovery.",
+        "videos": {
+            "ja": "https://stape.fun/e/P97GXm2R3ju0jJk/?autoplay=1",
+            "en": "https://stape.fun/e/XPVg3QddMXtDvjx/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 10,
+        "title": "Penta: The Desert No Man's Land",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/14390060b4035aa027ace83e0e49a85d.jpg",
+        "description": "With their gear-up complete, the crew heads into the No Man's Land, Penta, to get clues about the Sphere.",
+        "videos": {
+            "ja": "https://stape.fun/e/VODVG6dq9JcKJVe/?autoplay=1",
+            "en": "https://stape.fun/e/PvAXde2RZVh0O6L/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 11,
+        "title": "Amo's Hospitality",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e7caf3572b3684a59f24bfb56b290f63.jpg",
+        "description": "A mysterious woman living in the No Man's Land challenges the crew from an unexpected angle.",
+        "videos": {
+            "ja": "https://stape.fun/e/m6AzO27jrkfbq8e/?autoplay=1",
+            "en": "https://stape.fun/e/l7Ar3e9Z2Wu7PK6/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 12,
+        "title": "Something Like a Curse",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f171907c7c3e0d7446ed3f29e460949a.jpg",
+        "description": "Tamsy and Zanka fight to save their captive allies. In the aftermath, Rudo has an unexpected reaction.",
+        "videos": {
+            "ja": "https://stape.fun/e/olKqAOL7d1sJVoY/?autoplay=1",
+            "en": "https://stape.fun/e/jr1zY0wyldczw2w/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 13,
+        "title": "An Empty Gaze",
+        "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/2696dbf52905f8d8067772953169e390.jpg",
+        "description": "Amo tells the story of how she came to the tower and of the \"angels\" who came to visit her.",
+        "videos": {
+            "ja": "https://stape.fun/e/xOlM2AZKOjtk2kD/?autoplay=1",
+            "en": "https://stape.fun/e/j4JvJaWjaKTazv/?autoplay=1"
+        }
+    },
+    {
+        "series": "Gachiakuta",
+        "episode": 14,
+        "title": "The Storm Before the Storm",
+        "cover": "https://artworks.thetvdb.com/banners/v4/episode/11221451/screencap/68e6534324969.jpg",
+        "description": "After returning from the Penta No Man's Land, Rudo and the Cleaners face a series of new threats.",
+        "videos": {
+            "ja": "https://stape.fun/e/VmOZVRW2o7FK7e0/?autoplay=1",
+            "en": ""
+        }
     }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 2,
-    "title": "The Inhabited",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/13ad7d6c53cb800c8eda056156e491f3.jpg",
-    "description": "Cast into the Pit, Rudo is saved by the mysterious Enjin who may not have his best interests at heart.",
-    "videos": {
-      "ja": "https://stape.fun/e/q3PWvvq3o0TzQ4x/?autoplay=1",
-      "en": "https://stape.fun/e/41bbwjP48VhKMvl/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 3,
-    "title": "The Ground",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/4900bcc2f9957ad5f685eabda139b3e4.jpg",
-    "description": "Enjin teaches Rudo about life on the Ground, but an encounter with a churlish stranger may cut his time short.",
-    "videos": {
-      "ja": "https://stape.fun/e/xmMq3kW0oOIDbV/?autoplay=1",
-      "en": "https://stape.fun/e/wlqM6Q3JRzsJ0Rg/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 4,
-    "title": "Cleaner HQ",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e155e6dd1ea5b77efaf88ef35e63acd6.jpg",
-    "description": "After being introduced to Cleaner HQ, Rudo follows Riyo on a job to learn the business.",
-    "videos": {
-      "ja": "https://stape.fun/e/RwBZO4yLzbsdrmZ/?autoplay=1",
-      "en": "https://stape.fun/e/XgzXWj4b9kCDaYk/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 5,
-    "title": "Raiders",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f3c9f6fb35d0ad08e0c414e78a6ddcd0.jpg",
-    "description": "The Cleaners go on a job to save another Sphereite who survived the fall. Rudo tags along to learn more.",
-    "videos": {
-      "ja": "https://stape.fun/e/Q3OJjG33R4CRz2/?autoplay=1",
-      "en": "https://stape.fun/e/Wb6eRxXgWPtbabv/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 6,
-    "title": "One Good Strike!!",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/11e3e8783229b5eb1f65d0cd143da20c.jpg",
-    "description": "With the job having gone terribly wrong, Rudo finds himself face to face with a merciless Raider named Jabber.",
-    "videos": {
-      "ja": "https://stape.fun/e/OqLqQRwPXJCZb2B/?autoplay=1",
-      "en": "https://stape.fun/e/QXB0VWWzrec0b2w/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 7,
-    "title": "A Score to Settle",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/23b0df11100fb97461786957a5e3eaee.jpg",
-    "description": "Jabber employs a new strategy to get through Rudo's defenses, and another ally joins the fray.",
-    "videos": {
-      "ja": "https://stape.fun/e/7KkAjVpDXmcAAmD/?autoplay=1",
-      "en": "https://stape.fun/e/OPerbpDmwbF776/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 8,
-    "title": "Moving Forward",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/af309d65f6da57b817ea01471209894f.jpg",
-    "description": "Rudo deals with the emotional aftermath of the Jabber fight and gets a new lead about returning to the Sphere.",
-    "videos": {
-      "ja": "https://stape.fun/e/pLvwAjZe4bIVDP/?autoplay=1",
-      "en": "https://stape.fun/e/MywwArkkbximk1o/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 9,
-    "title": "The City of Graffiti",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/b069a42ddf5a58ea6494c18c849deea3.jpg",
-    "description": "To get a \"spell\" for their next mission, the Cleaners head to Canvas Town, where they make a tragic discovery.",
-    "videos": {
-      "ja": "https://stape.fun/e/P97GXm2R3ju0jJk/?autoplay=1",
-      "en": "https://stape.fun/e/XPVg3QddMXtDvjx/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 10,
-    "title": "Penta: The Desert No Man's Land",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/14390060b4035aa027ace83e0e49a85d.jpg",
-    "description": "With their gear-up complete, the crew heads into the No Man's Land, Penta, to get clues about the Sphere.",
-    "videos": {
-      "ja": "https://stape.fun/e/VODVG6dq9JcKJVe/?autoplay=1",
-      "en": "https://stape.fun/e/PvAXde2RZVh0O6L/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 11,
-    "title": "Amo's Hospitality",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/e7caf3572b3684a59f24bfb56b290f63.jpg",
-    "description": "A mysterious woman living in the No Man's Land challenges the crew from an unexpected angle.",
-    "videos": {
-      "ja": "https://stape.fun/e/m6AzO27jrkfbq8e/?autoplay=1",
-      "en": "https://stape.fun/e/l7Ar3e9Z2Wu7PK6/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 12,
-    "title": "Something Like a Curse",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/f171907c7c3e0d7446ed3f29e460949a.jpg",
-    "description": "Tamsy and Zanka fight to save their captive allies. In the aftermath, Rudo has an unexpected reaction.",
-    "videos": {
-      "ja": "https://stape.fun/e/olKqAOL7d1sJVoY/?autoplay=1",
-      "en": "https://stape.fun/e/jr1zY0wyldczw2w/?autoplay=1"
-    }
-  },
-  {
-    "series": "Gachiakuta",
-    "episode": 13,
-    "title": "An Empty Gaze",
-    "cover": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/2696dbf52905f8d8067772953169e390.jpg",
-    "description": "Amo tells the story of how she came to the tower and of the \"angels\" who came to visit her.",
-    "videos": {
-      "ja": "https://stape.fun/e/xOlM2AZKOjtk2kD/?autoplay=1",
-      "en": "https://stape.fun/e/j4JvJaWjaKTazv/?autoplay=1"
-    }
-  }
 ]
